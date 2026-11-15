@@ -1,0 +1,1 @@
+event_platform=/^Lin$/i ParentBaseFileName=/\/node$/i ParentCommandLine=/node-red/i ImageFileName=/\/bin\/sh$/i or ImageFileName=/\/bin\/dash$/i or ImageFileName=/\/bin\/bash$/i or ImageFileName=/\/usr\/bin\/sh$/i or ImageFileName=/\/usr\/bin\/bash$/i CommandLine=/ -c /i

@@ -1,1 +1,1 @@
-Image=/\\FortiVRS\.exe$/i TargetFilename=/\.exe$/i or TargetFilename=/\.dll$/i or TargetFilename=/\.bat$/i or TargetFilename=/\.ps1$/i or TargetFilename=/\.vbs$/i or TargetFilename=/\.cmd$/i not (TargetFilename=/\.log$/i or TargetFilename=/\.tmp$/i or TargetFilename=/\.dat$/i or TargetFilename=/\.lock$/i)
+Image=/\\FortiVRS\.exe$/i TargetFilename=/\.exe$/i or TargetFilename=/\.dll$/i or TargetFilename=/\.bat$/i or TargetFilename=/\.ps1$/i or TargetFilename=/\.vbs$/i or TargetFilename=/\.cmd$/i

@@ -1,2 +1,2 @@
 DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "/node" and InitiatingProcessCommandLine contains "node-red" and FolderPath endswith "/sh" and ProcessCommandLine contains " -c "
+| where InitiatingProcessFolderPath endswith "/node" and InitiatingProcessCommandLine contains "node-red" and (FolderPath endswith "/bin/sh" or FolderPath endswith "/bin/dash" or FolderPath endswith "/bin/bash" or FolderPath endswith "/usr/bin/sh" or FolderPath endswith "/usr/bin/bash") and ProcessCommandLine contains " -c "

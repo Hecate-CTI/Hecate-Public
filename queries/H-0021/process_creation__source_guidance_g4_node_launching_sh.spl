@@ -1,1 +1,1 @@
-ParentImage="*/node" ParentCommandLine="*node-red*" Image="*/sh" CommandLine="* -c *"
+ParentImage="*/node" ParentCommandLine="*node-red*" Image IN ("*/bin/sh", "*/bin/dash", "*/bin/bash", "*/usr/bin/sh", "*/usr/bin/bash") CommandLine="* -c *"

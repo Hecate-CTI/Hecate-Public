@@ -1,1 +1,1 @@
-any where process.executable.caseless:"*\\FortiVRS.exe" and (file.path like~ ("*.exe", "*.dll", "*.bat", "*.ps1", "*.vbs", "*.cmd")) and (not (file.path like~ ("*.log", "*.tmp", "*.dat", "*.lock")))
+any where process.executable.caseless:"*\\FortiVRS.exe" and (file.path like~ ("*.exe", "*.dll", "*.bat", "*.ps1", "*.vbs", "*.cmd"))

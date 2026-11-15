@@ -14,10 +14,10 @@ logsource:
   product: linux
 detection:
   selection_parent:
+    # contains (not endswith): paths like /usr/sbin/php-fpm8.3
     ParentImage|contains:
     - /php-fpm
     - /php-cgi
-    - /php
   selection_child:
     Image|endswith:
     - /bin/sh
@@ -34,4 +34,7 @@ hunt_id: H-0032
 hecate_review:
   verdict: pass
   reviewed_by: analyst
-  notes: Aligned title and description to explicitly identify defense-in-depth post-exploitation detection, complementing the primary webserver probe rule webserver__http_request_to_php2shell_vulnerable_endpoint.yml.
+  notes: >-
+    Defense-in-depth post-exploitation complement to
+    webserver__http_request_to_php2shell_vulnerable_endpoint.yml.
+    ParentImage limited to php-fpm/php-cgi (not bare /php) to avoid broad FPs.

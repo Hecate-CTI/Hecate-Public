@@ -1,1 +1,1 @@
-Image="*\\FortiVRS.exe" TargetFilename IN ("*.exe", "*.dll", "*.bat", "*.ps1", "*.vbs", "*.cmd") NOT (TargetFilename IN ("*.log", "*.tmp", "*.dat", "*.lock"))
+Image="*\\FortiVRS.exe" TargetFilename IN ("*.exe", "*.dll", "*.bat", "*.ps1", "*.vbs", "*.cmd")

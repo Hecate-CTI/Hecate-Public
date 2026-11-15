@@ -22,13 +22,7 @@ detection:
     - .ps1
     - .vbs
     - .cmd
-  filter_benign:
-    TargetFilename|endswith:
-    - .log
-    - .tmp
-    - .dat
-    - .lock
-  condition: selection_process and selection_target and not filter_benign
+  condition: selection_process and selection_target
 falsepositives:
 - Legitimate FortiClient administrative updates or helper tool deployments
 level: medium
@@ -36,4 +30,6 @@ hunt_id: H-0036
 hecate_review:
   verdict: pass
   reviewed_by: analyst
-  notes: Refined detection to require executable/script extensions in TargetFilename, filtering routine operational files (.log, .tmp, .dat). Aligned post-exploitation scope.
+  notes: >-
+    Requires payload/script extensions (.exe/.dll/.bat/.ps1/.vbs/.cmd). Removed
+    dead benign filters that could never match the target selection.

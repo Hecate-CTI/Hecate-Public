@@ -16,14 +16,29 @@ detection:
     Image|endswith:
     - /httpd
     - /apache2
-  filter:
+  filter_private:
     DestinationIp|startswith:
     - '127.'
     - '::1'
     - '10.'
     - '192.168.'
     - '172.16.'
-  condition: selection and not filter
+    - '172.17.'
+    - '172.18.'
+    - '172.19.'
+    - '172.20.'
+    - '172.21.'
+    - '172.22.'
+    - '172.23.'
+    - '172.24.'
+    - '172.25.'
+    - '172.26.'
+    - '172.27.'
+    - '172.28.'
+    - '172.29.'
+    - '172.30.'
+    - '172.31.'
+  condition: selection and not filter_private
 falsepositives:
 - Apache httpd configured as a reverse proxy connecting to external backend application servers
 level: high
@@ -31,4 +46,6 @@ hunt_id: H-0035
 hecate_review:
   verdict: pass
   reviewed_by: analyst
-  notes: Retained as defense-in-depth network boundary check for post-exploitation reverse shells and C2 communication, filtering loopback and RFC 1918 addresses.
+  notes: >-
+    Defense-in-depth post-exploitation C2/reverse-shell check. Filters loopback
+    and full RFC1918 ranges (10/8, 172.16/12, 192.168/16), not only 172.16.0.0/16.

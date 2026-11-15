@@ -33,13 +33,7 @@ detection:
     - .pl
     - .so
     - .elf
-  filter_legitimate:
-    TargetFilename|endswith:
-    - .log
-    - .pid
-    - .lock
-    - .tmp
-  condition: selection_process and selection_path and selection_target and not filter_legitimate
+  condition: selection_process and selection_path and selection_target
 falsepositives:
 - Legitimate web application file upload features allowing executable scripts
 - Content management systems writing plugins or cache updates
@@ -48,4 +42,6 @@ hunt_id: H-0035
 hecate_review:
   verdict: pass
   reviewed_by: analyst
-  notes: Refined to require webshell and executable script extensions in TargetFilename, filtering routine temporary and log files.
+  notes: >-
+    Requires webshell/script/binary extensions under web or staging paths.
+    Dropped dead .log/.pid/.lock/.tmp filters that cannot match selection_target.

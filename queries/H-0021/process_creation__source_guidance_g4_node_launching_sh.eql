@@ -1,1 +1,1 @@
-any where process.parent.executable.caseless:"*/node" and process.parent.command_line:"*node-red*" and process.executable.caseless:"*/sh" and process.command_line:"* -c *"
+any where process.parent.executable:"*/node" and process.parent.command_line:"*node-red*" and (process.executable like~ ("*/bin/sh", "*/bin/dash", "*/bin/bash", "*/usr/bin/sh", "*/usr/bin/bash")) and process.command_line:"* -c *"
