@@ -1,0 +1,1 @@
+Image=/\/freeswitch$/i DestinationPort=8000 or DestinationPort=8080 or DestinationPort=8443 or DestinationPort=8888 or DestinationPort=8899 or DestinationPort=9000 or DestinationPort=9090 or DestinationPort=9999

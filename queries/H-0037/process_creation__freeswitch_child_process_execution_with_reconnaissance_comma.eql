@@ -1,0 +1,1 @@
+any where process.parent.executable:"*/freeswitch" and (process.command_line like~ ("*cat /etc/passwd*", "*id;*", "*hostname*", "*curl http://*", "*wget http://*"))

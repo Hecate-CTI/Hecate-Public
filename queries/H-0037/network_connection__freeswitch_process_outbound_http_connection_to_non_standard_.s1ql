@@ -1,0 +1,1 @@
+(ObjectType In ("DNS","Url","IP")) AND (EndpointOS = "linux" AND (SrcProcImagePath endswithCIS "/freeswitch" AND (DstPort In Contains AnyCase (8000,8080,8443,8888,8899,9000,9090,9999))))

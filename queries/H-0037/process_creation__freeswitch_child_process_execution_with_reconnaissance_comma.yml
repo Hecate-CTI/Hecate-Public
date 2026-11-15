@@ -1,0 +1,36 @@
+title: FreeSWITCH Child Process Execution with Reconnaissance Commands
+id: a044ca75-f551-4325-8f32-1641a21f0c63
+status: experimental
+description: Detects suspicious child process execution spawned by FreeSWITCH process with commands commonly
+  used for system reconnaissance and credential disclosure. This behavior is consistent with post-exploitation
+  activity following CVE-2026-116779 exploitation, where attackers execute commands such as 'id', 'hostname',
+  'cat /etc/passwd', or initiate HTTP connections for data exfiltration.
+references:
+- https://github.com/DeathShotXD/SIP2Shell
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-15'
+tags:
+- attack.t1059.006
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_parent:
+    ParentImage|endswith: /freeswitch
+  selection_commands:
+    CommandLine|contains:
+    - cat /etc/passwd
+    - id;
+    - hostname
+    - curl http://
+    - wget http://
+  condition: selection_parent and selection_commands
+falsepositives:
+- Legitimate FreeSWITCH administrative scripts or maintenance tasks
+- Custom FreeSWITCH dialplan configurations that execute system commands
+- Monitoring or health-check scripts spawned by FreeSWITCH
+level: high
+hunt_id: H-0037
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: failed

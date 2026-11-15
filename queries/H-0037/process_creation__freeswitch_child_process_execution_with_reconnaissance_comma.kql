@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "/freeswitch" and (ProcessCommandLine contains "cat /etc/passwd" or ProcessCommandLine contains "id;" or ProcessCommandLine contains "hostname" or ProcessCommandLine contains "curl http://" or ProcessCommandLine contains "wget http://")

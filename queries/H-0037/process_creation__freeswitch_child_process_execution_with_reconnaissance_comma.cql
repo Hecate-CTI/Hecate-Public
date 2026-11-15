@@ -1,0 +1,1 @@
+event_platform=/^Lin$/i ParentBaseFileName=/\/freeswitch$/i CommandLine=/cat \/etc\/passwd/i or CommandLine=/id;/i or CommandLine=/hostname/i or CommandLine=/curl http:\/\//i or CommandLine=/wget http:\/\//i

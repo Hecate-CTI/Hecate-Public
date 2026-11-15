@@ -1,0 +1,1 @@
+any where process.executable:"*/freeswitch" and (destination.port like~ (8000, 8080, 8443, 8888, 8899, 9000, 9090, 9999))

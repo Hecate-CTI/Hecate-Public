@@ -1,0 +1,1 @@
+EventType = "Process Creation" AND (EndpointOS = "linux" AND (SrcProcImagePath endswithCIS "/freeswitch" AND (TgtProcCmdLine containsCIS "cat /etc/passwd" OR TgtProcCmdLine containsCIS "id;" OR TgtProcCmdLine containsCIS "hostname" OR TgtProcCmdLine containsCIS "curl http://" OR TgtProcCmdLine containsCIS "wget http://")))

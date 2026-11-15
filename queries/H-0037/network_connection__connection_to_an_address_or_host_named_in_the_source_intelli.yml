@@ -1,0 +1,31 @@
+title: Connection to an address or host named in the source intelligence
+id: c12101eb-aa13-48a2-8cda-d50e11dd1f6e
+status: experimental
+description: Deterministic IOC rule built from the indicators the source intelligence published, with
+  no model involvement. Matches an outbound connection to a current address or host the source published,
+  on the ports the source ties to it where it names them. Indicators the source marks historical are excluded.
+references:
+- https://github.com/DeathShotXD/SIP2Shell
+author: hecate (auto-generated from source indicators - requires analyst review)
+date: '2026-11-15'
+tags: []
+logsource:
+  category: network_connection
+  product: linux
+detection:
+  selection_1_any:
+    DestinationIp: 1.2.3.4
+  condition: 1 of selection_*
+falsepositives:
+- Shared hosting or CDN addresses reused by unrelated sites
+level: high
+hecate_provenance:
+- value: 1.2.3.4
+  type: ipv4
+  role: unknown
+  status: unknown
+  confidence: unknown
+  source: cti
+hunt_id: H-0037
+x_hecate_replay_matched: true
+x_hecate_synthetic_holdout_status: passed

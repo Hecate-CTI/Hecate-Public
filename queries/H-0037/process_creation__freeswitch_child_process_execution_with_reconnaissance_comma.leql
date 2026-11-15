@@ -1,0 +1,1 @@
+where(parent_process.exe_path=/^.*\/freeswitch$/i AND (process.cmd_line=/^.*cat \/etc\/passwd.*$/i OR process.cmd_line=/^.*id;.*$/i OR process.cmd_line=/^.*hostname.*$/i OR process.cmd_line=/^.*curl http:\/\/.*$/i OR process.cmd_line=/^.*wget http:\/\/.*$/i))

@@ -1,0 +1,1 @@
+ParentImage="*/freeswitch" CommandLine IN ("*cat /etc/passwd*", "*id;*", "*hostname*", "*curl http://*", "*wget http://*")

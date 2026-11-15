@@ -1,0 +1,2 @@
+DeviceNetworkEvents
+| where InitiatingProcessFolderPath endswith "/freeswitch" and (RemotePort in~ ("8000", "8080", "8443", "8888", "8899", "9000", "9090", "9999"))

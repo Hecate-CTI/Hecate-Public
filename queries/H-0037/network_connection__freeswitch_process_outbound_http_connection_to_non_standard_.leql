@@ -1,0 +1,1 @@
+where(process.exe_path=/^.*\/freeswitch$/i AND (destination_port=8000 OR destination_port=8080 OR destination_port=8443 OR destination_port=8888 OR destination_port=8899 OR destination_port=9000 OR destination_port=9090 OR destination_port=9999))
