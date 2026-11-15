@@ -1,0 +1,1 @@
+any where process.executable:"*/mkdir" and process.command_line:"*/Library/Caches/com.apple.trustd*"

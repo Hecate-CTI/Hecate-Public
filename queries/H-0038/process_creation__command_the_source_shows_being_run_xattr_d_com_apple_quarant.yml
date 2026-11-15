@@ -1,0 +1,23 @@
+title: 'Command the source shows being run: xattr -d com.apple.quarantine'
+id: 6ee19875-2197-47c1-8232-cf01514c0c32
+status: experimental
+description: 'Deterministic rule built from a command quoted in the primary source, with no model involvement.
+  The source shows this command being run: "xattr -d com.apple.quarantine $HOME/Library/Caches/com.apple.trustd/com.apple.verified".'
+references: []
+author: hecate (auto-generated from commands quoted in the source - requires analyst review)
+date: '2026-11-15'
+tags:
+- attack.t1553.001
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection:
+    Image|endswith: /xattr
+    CommandLine|contains: -d com.apple.quarantine
+  condition: selection
+falsepositives:
+- Administrators or software running the same command or creating the task for legitimate reasons
+level: medium
+hunt_id: H-0038
+x_hecate_synthetic_holdout_status: failed

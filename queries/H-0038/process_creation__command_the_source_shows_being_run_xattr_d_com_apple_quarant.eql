@@ -1,0 +1,1 @@
+any where process.executable:"*/xattr" and process.command_line:"*-d com.apple.quarantine*"

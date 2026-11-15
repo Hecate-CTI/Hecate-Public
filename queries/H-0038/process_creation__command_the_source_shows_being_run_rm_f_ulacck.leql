@@ -1,0 +1,1 @@
+where((process.exe_path=/^.*\/bin\/rm$/i OR process.exe_path=/^.*\/usr\/bin\/rm$/i) AND process.cmd_line=/^.*-f \.UlaccK.*$/i)

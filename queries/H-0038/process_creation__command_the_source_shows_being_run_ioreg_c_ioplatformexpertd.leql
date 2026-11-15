@@ -1,0 +1,1 @@
+where(process.exe_path=/^.*\/ioreg$/i AND process.cmd_line=/^.*-c IOPlatformExpertDevice.*$/i)

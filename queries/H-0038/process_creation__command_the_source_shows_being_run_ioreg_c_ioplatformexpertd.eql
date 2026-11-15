@@ -1,0 +1,1 @@
+any where process.executable:"*/ioreg" and process.command_line:"*-c IOPlatformExpertDevice*"

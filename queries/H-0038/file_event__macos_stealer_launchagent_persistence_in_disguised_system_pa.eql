@@ -1,0 +1,1 @@
+any where (TargetFilename:"*/Library/LaunchAgents/*" and TargetFilename:"*.plist") or (TargetFilename:"*/Library/Caches/com.apple.trustd/*" and TargetFilename:"*com.apple.verified*") or (TargetFilename:"*/Library/Caches/homeenergyd/*" and TargetFilename:"*com.apple.homeenergyd*")

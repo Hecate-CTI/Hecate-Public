@@ -1,0 +1,1 @@
+any where (process.executable like~ ("*/bin/rm", "*/usr/bin/rm")) and process.command_line:"*-f .UlaccK*"

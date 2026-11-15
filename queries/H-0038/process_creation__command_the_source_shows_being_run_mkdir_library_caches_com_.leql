@@ -1,0 +1,1 @@
+where(process.exe_path=/^.*\/mkdir$/i AND process.cmd_line=/^.*\/Library\/Caches\/com\.apple\.trustd.*$/i)

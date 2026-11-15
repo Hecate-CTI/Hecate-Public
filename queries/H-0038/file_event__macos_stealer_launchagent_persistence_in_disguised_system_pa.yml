@@ -1,0 +1,39 @@
+title: macOS Stealer LaunchAgent Persistence in Disguised System Paths
+id: 2d22571a-c0bd-49f6-a719-0074f1c1adae
+status: experimental
+description: Detects creation of LaunchAgent plist files combined with suspicious cache directory artifacts
+  used by macOS credential stealers. The malware creates persistence via LaunchAgents while masquerading
+  as legitimate Apple system services (com.apple.trustd, com.apple.homeenergyd) in user cache directories
+  to evade detection.
+references: []
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-15'
+tags:
+- attack.t1036.005
+- attack.t1547.015
+logsource:
+  category: file_event
+  product: macos
+detection:
+  selection_launchagent:
+    TargetFilename|contains: /Library/LaunchAgents/
+    TargetFilename|endswith: .plist
+  selection_cache_trustd:
+    TargetFilename|contains|all:
+    - /Library/Caches/com.apple.trustd/
+    - com.apple.verified
+  selection_cache_homeenergyd:
+    TargetFilename|contains|all:
+    - /Library/Caches/homeenergyd/
+    - com.apple.homeenergyd
+  condition: selection_launchagent or selection_cache_trustd or selection_cache_homeenergyd
+falsepositives:
+- Legitimate Apple system services creating cache files (rare for user-writable cache directories with
+  these specific names)
+- Third-party software using similar naming conventions
+- Administrative automation creating LaunchAgents for legitimate purposes
+level: high
+hunt_id: H-0038
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: failed

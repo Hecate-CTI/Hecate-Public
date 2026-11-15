@@ -1,0 +1,1 @@
+any where process.executable:"*/launchctl" and process.command_line:"*bootstrap*"

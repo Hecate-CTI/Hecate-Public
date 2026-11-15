@@ -1,0 +1,60 @@
+title: Connection to an address or host named in the source intelligence
+id: cce8300e-beb9-4adf-92db-04b61412af53
+status: experimental
+description: Deterministic IOC rule built from the indicators the source intelligence published, with
+  no model involvement. Matches an outbound connection to a current address or host the source published,
+  on the ports the source ties to it where it names them. Indicators the source marks historical are excluded.
+references: []
+author: hecate (auto-generated from source indicators - requires analyst review)
+date: '2026-11-15'
+tags: []
+logsource:
+  category: network_connection
+  product: macos
+detection:
+  selection_1_any:
+    DestinationIp: 193.29.224.151
+  selection_2_any:
+    DestinationIp: 77.221.152.34
+  selection_3_any:
+    DestinationIp: 138.124.118.69
+  selection_4_any:
+    DestinationHostname: profitnow.io
+  condition: 1 of selection_*
+falsepositives:
+- Shared hosting or CDN addresses reused by unrelated sites
+level: high
+hecate_provenance:
+- value: 193.29.224.151
+  type: ipv4
+  role: delivery
+  status: unknown
+  confidence: unknown
+  source: cti
+- value: 77.221.152.34
+  type: ipv4
+  role: delivery
+  status: unknown
+  confidence: unknown
+  source: cti
+- value: 138.124.118.69
+  type: ipv4
+  role: c2
+  status: unknown
+  confidence: unknown
+  source: cti
+- value: profitnow.io
+  type: domain
+  role: delivery
+  status: unknown
+  confidence: unknown
+  source: cti
+- value: https://profitnow.io/
+  type: url
+  role: unknown
+  status: unknown
+  confidence: unknown
+  source: cti
+hunt_id: H-0038
+x_hecate_replay_matched: true
+x_hecate_synthetic_holdout_status: passed

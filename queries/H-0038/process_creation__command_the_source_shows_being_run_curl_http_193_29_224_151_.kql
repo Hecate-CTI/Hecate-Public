@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where FolderPath endswith "/curl" and ProcessCommandLine matches regex ".*http://193\\.29\\.224\\.151/92392991a0cca55.force=1.*"

@@ -1,0 +1,1 @@
+(TargetFilename="*/Library/LaunchAgents/*" TargetFilename="*.plist") OR (TargetFilename="*/Library/Caches/com.apple.trustd/*" TargetFilename="*com.apple.verified*") OR (TargetFilename="*/Library/Caches/homeenergyd/*" TargetFilename="*com.apple.homeenergyd*")

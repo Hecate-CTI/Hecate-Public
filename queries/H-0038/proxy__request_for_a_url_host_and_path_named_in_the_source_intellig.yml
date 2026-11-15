@@ -1,0 +1,36 @@
+title: Request for a URL host and path named in the source intelligence
+id: 36d0f9f1-62ee-432c-bda3-3ae2d1fad75b
+status: experimental
+description: Deterministic IOC rule built from the indicators the source intelligence published, with
+  no model involvement. Matches a proxy or web request for a current URL host and path the source published.
+  URL paths appear only in proxy and web logs, not in endpoint file or process events.
+references: []
+author: hecate (auto-generated from source indicators - requires analyst review)
+date: '2026-11-15'
+tags: []
+logsource:
+  category: proxy
+detection:
+  selection_0:
+    cs-host: 193.29.224.151
+    c-uri|contains: /92392991a0cca55
+  condition: 1 of selection_*
+falsepositives:
+- Authorized investigation or retrieval of the published URL
+level: high
+hecate_provenance:
+- value: 193.29.224.151
+  type: ipv4
+  role: delivery
+  status: unknown
+  confidence: unknown
+  source: cti
+- value: http://193.29.224.151/92392991a0cca55?force=1
+  type: url
+  role: unknown
+  status: unknown
+  confidence: unknown
+  source: cti
+hunt_id: H-0038
+x_hecate_replay_matched: true
+x_hecate_synthetic_holdout_status: failed
