@@ -1,0 +1,23 @@
+title: H-0031 Incremental Campaign Detection (domain)
+id: inc-h-0031-20261115161042
+status: experimental
+description: Incremental rule variant generated from correlated campaign intelligence
+  for H-0031.
+author: hecate-runner correlation-engine
+date: 2026/11/15
+logsource:
+  product: windows
+  category: dns_query
+detection:
+  selection:
+    QueryName:
+    - 204.0-5.1
+    - img.shields.io
+    - 202.6.8-brightgreen
+    - evil.csv
+  condition: selection
+falsepositives:
+- Legitimate administration or research scanning
+level: medium
+tags:
+- attack.campaign.h-0031
