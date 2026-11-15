@@ -1,0 +1,1 @@
+(ObjectType In ("DNS","Url","IP")) AND (EndpointOS = "linux" AND ((SrcProcImagePath endswithCIS "/httpd" OR SrcProcImagePath endswithCIS "/apache2") AND (NOT (DstIP startswithCIS "127." OR DstIP startswithCIS "::1" OR DstIP startswithCIS "10." OR DstIP startswithCIS "192.168." OR DstIP startswithCIS "172.16."))))

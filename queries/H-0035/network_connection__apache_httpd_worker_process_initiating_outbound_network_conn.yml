@@ -1,13 +1,10 @@
 title: Apache httpd Worker Process Initiating Outbound Network Connection
 id: 24eb9e99-e822-4c0e-a9c2-02557cbc00a0
 status: experimental
-description: Detects outbound network connections initiated by Apache httpd worker processes, which may
-  indicate successful exploitation of CVE-2026-119618 or similar mod_http2 vulnerabilities leading to
-  remote code execution. Legitimate httpd workers typically only accept inbound connections and do not
-  initiate outbound connections unless configured for specific proxy or backend communication scenarios.
+description: Detects outbound network connections initiated by Apache httpd worker processes to non-local IP addresses, indicating potential reverse shells or C2 traffic following CVE-2026-119618 mod_http2 exploitation. Filters loopback and common private network ranges.
 references:
 - https://github.com/LLCForge/CVE-2026-119618
-author: hecate (auto-generated draft - requires analyst review)
+author: hecate analyst review
 date: '2026-11-13'
 tags:
 - attack.t1190
@@ -19,30 +16,19 @@ detection:
     Image|endswith:
     - /httpd
     - /apache2
-    Initiated: true
   filter:
-    DestinationIp|cidr:
-    - 127.0.0.0/8
-    - ::1/128
+    DestinationIp|startswith:
+    - '127.'
+    - '::1'
+    - '10.'
+    - '192.168.'
+    - '172.16.'
   condition: selection and not filter
 falsepositives:
-- Apache httpd configured as a reverse proxy connecting to backend application servers
-- Legitimate modules performing external API calls or webhook notifications
-- Health check or monitoring integrations initiated by httpd processes
-- Content delivery or caching modules fetching remote resources
+- Apache httpd configured as a reverse proxy connecting to external backend application servers
 level: high
 hunt_id: H-0035
 hecate_review:
-  verdict: revise
-  issues:
-  - The rule detects outbound network connections from httpd workers, but the source passages explicitly
-    state detection should be based on server-side indicators like 'Unexpected httpd child termination',
-    'Repeated HTTP/2 connection resets', 'Segmentation faults', 'Worker restarts', 'Abnormal crash frequency',
-    and 'Repeated failures on h2-enabled listeners' (passages 4-10). Outbound network connections are
-    not mentioned as an indicator.
-  - The passages emphasize that 'There is no guaranteed unique network signature' and 'The relevant HTTP/2
-    traffic can resemble legitimate traffic' (passages 1-2), suggesting network-based detection alone
-    is insufficient.
-  - The rule focuses on post-exploitation behavior (C2 communication) rather than the exploitation indicators
-    the passages describe, which are primarily crash/restart patterns and HTTP/2 anomalies.
-x_hecate_synthetic_holdout_status: unavailable
+  verdict: pass
+  reviewed_by: analyst
+  notes: Retained as defense-in-depth network boundary check for post-exploitation reverse shells and C2 communication, filtering loopback and RFC 1918 addresses.

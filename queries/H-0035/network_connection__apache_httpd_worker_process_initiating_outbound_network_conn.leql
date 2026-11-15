@@ -1,0 +1,1 @@
+where((process.exe_path=/^.*\/httpd$/i OR process.exe_path=/^.*\/apache2$/i) AND NOT (destination_address=/^127\..*$/i OR destination_address=/^::1.*$/i OR destination_address=/^10\..*$/i OR destination_address=/^192\.168\..*$/i OR destination_address=/^172\.16\..*$/i))

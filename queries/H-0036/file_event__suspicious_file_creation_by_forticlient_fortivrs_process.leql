@@ -1,1 +1,1 @@
-where(process.exe_path=/^.*\\FortiVRS\.exe$/i)
+where(process.exe_path=/^.*\\FortiVRS\.exe$/i AND (file.path=/^.*\.exe$/i OR file.path=/^.*\.dll$/i OR file.path=/^.*\.bat$/i OR file.path=/^.*\.ps1$/i OR file.path=/^.*\.vbs$/i OR file.path=/^.*\.cmd$/i) AND NOT (file.path=/^.*\.log$/i OR file.path=/^.*\.tmp$/i OR file.path=/^.*\.dat$/i OR file.path=/^.*\.lock$/i))

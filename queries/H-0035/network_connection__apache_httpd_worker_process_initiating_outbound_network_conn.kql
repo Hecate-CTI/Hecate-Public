@@ -1,0 +1,2 @@
+DeviceNetworkEvents
+| where (InitiatingProcessFolderPath endswith "/httpd" or InitiatingProcessFolderPath endswith "/apache2") and (not((RemoteIP startswith "127." or RemoteIP startswith "::1" or RemoteIP startswith "10." or RemoteIP startswith "192.168." or RemoteIP startswith "172.16.")))

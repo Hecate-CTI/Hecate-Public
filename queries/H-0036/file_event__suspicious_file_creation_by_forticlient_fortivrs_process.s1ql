@@ -1,1 +1,1 @@
-ObjectType = "File" AND (EndpointOS = "windows" AND SrcProcImagePath endswithCIS "\FortiVRS.exe")
+ObjectType = "File" AND (EndpointOS = "windows" AND (SrcProcImagePath endswithCIS "\FortiVRS.exe" AND (TgtFilePath endswithCIS ".exe" OR TgtFilePath endswithCIS ".dll" OR TgtFilePath endswithCIS ".bat" OR TgtFilePath endswithCIS ".ps1" OR TgtFilePath endswithCIS ".vbs" OR TgtFilePath endswithCIS ".cmd") AND (NOT (TgtFilePath endswithCIS ".log" OR TgtFilePath endswithCIS ".tmp" OR TgtFilePath endswithCIS ".dat" OR TgtFilePath endswithCIS ".lock"))))

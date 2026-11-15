@@ -1,1 +1,1 @@
-Image IN ("*/httpd", "*/apache2") Initiated=true NOT (DestinationIp="127.0.0.0/8" OR DestinationIp="::1/128")
+Image IN ("*/httpd", "*/apache2") NOT (DestinationIp IN ("127.*", "::1*", "10.*", "192.168.*", "172.16.*"))

@@ -1,2 +1,2 @@
 DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\FortiVRS.exe"
+| where InitiatingProcessFolderPath endswith "\\FortiVRS.exe" and (FolderPath endswith ".exe" or FolderPath endswith ".dll" or FolderPath endswith ".bat" or FolderPath endswith ".ps1" or FolderPath endswith ".vbs" or FolderPath endswith ".cmd") and (not((FolderPath endswith ".log" or FolderPath endswith ".tmp" or FolderPath endswith ".dat" or FolderPath endswith ".lock")))

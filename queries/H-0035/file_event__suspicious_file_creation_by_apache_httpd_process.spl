@@ -1,1 +1,1 @@
-Image IN ("*/httpd", "*/apache2") TargetFilename IN ("*/var/www/*", "*/usr/share/nginx/html/*", "*/srv/http/*", "*/tmp/*", "*/dev/shm/*") NOT (TargetFilename IN ("*.log", "*.pid", "*.lock"))
+Image IN ("*/httpd", "*/apache2") TargetFilename IN ("*/var/www/*", "*/usr/share/nginx/html/*", "*/srv/http/*", "*/tmp/*", "*/dev/shm/*") TargetFilename IN ("*.php", "*.phtml", "*.php5", "*.sh", "*.py", "*.pl", "*.so", "*.elf") NOT (TargetFilename IN ("*.log", "*.pid", "*.lock", "*.tmp"))
