@@ -1,0 +1,1 @@
+any where process.parent.executable:"*/java*" and (process.executable like~ ("*/bin/sh", "*/bin/bash", "*/bin/dash", "*/bin/zsh", "*/usr/bin/curl", "*/usr/bin/wget", "*/usr/bin/whoami", "*/usr/bin/id"))

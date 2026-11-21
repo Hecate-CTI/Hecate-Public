@@ -1,0 +1,27 @@
+title: OpenJDK HotSpot Crash Log Generation After Memory Corruption
+id: e8b2c9d3-4f5a-4b6c-8d7e-2b3c4d5e6f7a
+status: stable
+description: Detects the creation of an OpenJDK HotSpot fatal error log (hs_err_pid) or core dump file following native memory corruption in java.util.Base64 during CVE-2026-114938 exploitation attempts.
+references:
+- https://calif.io/java4shell
+author: hecate-runner orchestrator
+date: '2026-11-19'
+tags:
+- attack.execution
+- attack.t1059.007
+logsource:
+  category: file_event
+  product: linux
+detection:
+  selection_file:
+    TargetFilename|contains:
+    - /hs_err_pid
+    - /core.
+  selection_proc:
+    Image|contains:
+    - /java
+  condition: selection_file and selection_proc
+falsepositives:
+- Unrelated JVM crashes due to OutOfMemory or native library segmentation faults
+level: medium
+hunt_id: H-0039

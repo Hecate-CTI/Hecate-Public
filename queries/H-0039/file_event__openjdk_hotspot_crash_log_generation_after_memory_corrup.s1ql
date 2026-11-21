@@ -1,0 +1,1 @@
+ObjectType = "File" AND (EndpointOS = "linux" AND ((TgtFilePath containsCIS "/hs_err_pid" OR TgtFilePath containsCIS "/core.") AND SrcProcImagePath containsCIS "/java"))

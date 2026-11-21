@@ -1,0 +1,1 @@
+TargetFilename IN ("*/hs_err_pid*", "*/core.*") Image="*/java*"

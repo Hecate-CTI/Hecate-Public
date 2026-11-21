@@ -1,0 +1,1 @@
+where((file.path=/^.*\/hs_err_pid.*$/i OR file.path=/^.*\/core\..*$/i) AND process.exe_path=/^.*\/java.*$/i)

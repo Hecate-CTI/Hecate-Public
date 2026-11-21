@@ -1,0 +1,1 @@
+any where (file.path like~ ("*/hs_err_pid*", "*/core.*")) and process.executable:"*/java*"

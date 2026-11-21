@@ -1,0 +1,1 @@
+where(parent_process.exe_path=/^.*\/java.*$/i AND (process.exe_path=/^.*\/bin\/sh$/i OR process.exe_path=/^.*\/bin\/bash$/i OR process.exe_path=/^.*\/bin\/dash$/i OR process.exe_path=/^.*\/bin\/zsh$/i OR process.exe_path=/^.*\/usr\/bin\/curl$/i OR process.exe_path=/^.*\/usr\/bin\/wget$/i OR process.exe_path=/^.*\/usr\/bin\/whoami$/i OR process.exe_path=/^.*\/usr\/bin\/id$/i))

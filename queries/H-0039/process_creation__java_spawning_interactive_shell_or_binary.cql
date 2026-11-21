@@ -1,0 +1,1 @@
+event_platform=/^Lin$/i ParentBaseFileName=/\/java/i ImageFileName=/\/bin\/sh$/i or ImageFileName=/\/bin\/bash$/i or ImageFileName=/\/bin\/dash$/i or ImageFileName=/\/bin\/zsh$/i or ImageFileName=/\/usr\/bin\/curl$/i or ImageFileName=/\/usr\/bin\/wget$/i or ImageFileName=/\/usr\/bin\/whoami$/i or ImageFileName=/\/usr\/bin\/id$/i

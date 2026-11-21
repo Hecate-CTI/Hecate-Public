@@ -1,0 +1,2 @@
+DeviceFileEvents
+| where (FolderPath contains "/hs_err_pid" or FolderPath contains "/core.") and InitiatingProcessFolderPath contains "/java"

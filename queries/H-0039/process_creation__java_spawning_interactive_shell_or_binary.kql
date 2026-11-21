@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where InitiatingProcessFolderPath contains "/java" and (FolderPath endswith "/bin/sh" or FolderPath endswith "/bin/bash" or FolderPath endswith "/bin/dash" or FolderPath endswith "/bin/zsh" or FolderPath endswith "/usr/bin/curl" or FolderPath endswith "/usr/bin/wget" or FolderPath endswith "/usr/bin/whoami" or FolderPath endswith "/usr/bin/id")
