@@ -44,7 +44,7 @@ __pycache__/
 
 # Intake cursors, scheduler state, and queued intelligence
 .cursors/
-.*_cursor_state.json
+.*_cursor_state*
 .orchestrator_state.json
 cti_queue/
 
