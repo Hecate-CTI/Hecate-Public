@@ -1,0 +1,1 @@
+"cs-uri-stem"=/\/api\//i or "cs-uri-stem"=/\/admin\//i or "cs-uri-stem"=/\/login/i or "cs-uri-stem"=/\/auth/i or "cs-uri-stem"=/\/root/i or "cs-uri-stem"=/\/system/i or "cs-uri-stem"=/\/config/i "sc-status"=200 or "sc-status"=201 or "sc-status"=202 or "sc-status"=204 or "sc-status"=301 or "sc-status"=302 or "sc-status"=303 or "sc-status"=307 or "sc-status"=308

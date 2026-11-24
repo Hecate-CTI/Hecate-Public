@@ -1,0 +1,49 @@
+title: Cisco Expressway TelePresence VCS Authentication Bypass Exploitation Attempt
+id: fc89fb2a-2036-4a7a-a4a1-9b33ac35c7c8
+status: experimental
+description: Detects HTTP requests targeting administrative or API endpoints on Cisco Expressway Series
+  and TelePresence VCS devices that may indicate exploitation attempts of CVE-2026-76466 authentication
+  bypass vulnerability. This vulnerability allows unauthenticated attackers to gain root access via hard-coded
+  credentials. Successful exploitation enables initial access to collaboration infrastructure without
+  prior authentication.
+references:
+- https://github.com/cveForge/CVE-2026-76466
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-24'
+tags:
+- attack.t1190
+logsource:
+  category: webserver
+detection:
+  selection_admin_paths:
+    cs-uri-stem|contains:
+    - /api/
+    - /admin/
+    - /login
+    - /auth
+    - /root
+    - /system
+    - /config
+  selection_status:
+    sc-status:
+    - 200
+    - 201
+    - 202
+    - 204
+    - 301
+    - 302
+    - 303
+    - 307
+    - 308
+  condition: selection_admin_paths and selection_status
+falsepositives:
+- Legitimate administrative access to Cisco Expressway or TelePresence VCS management interfaces
+- Automated monitoring and health check systems querying API endpoints
+- Integration platforms performing authenticated API calls
+- Scheduled maintenance and configuration management activities
+level: high
+hunt_id: H-0040
+hecate_review:
+  verdict: keep
+  rationale: Validated for Cisco Expressway management and API endpoints.
+x_hecate_synthetic_holdout_status: failed

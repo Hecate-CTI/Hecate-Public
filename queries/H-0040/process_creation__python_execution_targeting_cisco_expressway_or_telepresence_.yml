@@ -1,0 +1,38 @@
+title: Python Execution Targeting Cisco Expressway or TelePresence VCS Hosts
+id: 579c879c-9704-47d6-8c88-0a2bdc8955e7
+status: experimental
+description: Detects execution of Python scripts with command-line arguments referencing Cisco Expressway
+  or TelePresence VCS hostnames, consistent with CVE-2026-76466 proof-of-concept exploitation attempts.
+  The public PoC targets these collaboration platforms via HTTPS on ports 443 and 8443 to exploit authentication
+  bypass vulnerabilities.
+references:
+- https://github.com/cveForge/CVE-2026-76466
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-24'
+tags:
+- attack.t1059.006
+- attack.t1190
+logsource:
+  category: process_creation
+detection:
+  selection_python:
+    Image|endswith:
+    - \python.exe
+    - \python3.exe
+    - \python2.exe
+  selection_target:
+    CommandLine|contains:
+    - expressway
+    - telepresence
+  selection_protocol:
+    CommandLine|contains: https://
+  condition: all of selection_*
+falsepositives:
+- Legitimate administrative scripts for Cisco Expressway or TelePresence VCS management and monitoring
+- Security scanning and vulnerability assessment tools targeting collaboration infrastructure
+- Automation frameworks performing health checks or configuration audits on video conferencing platforms
+level: high
+hunt_id: H-0040
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: failed

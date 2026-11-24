@@ -1,0 +1,1 @@
+event_platform=/^Win$/i event_simpleName=/^ProcessRollup2$/i or event_simpleName=/^SyntheticProcessRollup2$/i ImageFileName=/\\python\.exe$/i or ImageFileName=/\\python3\.exe$/i or ImageFileName=/\\python2\.exe$/i CommandLine=/expressway/i or CommandLine=/telepresence/i CommandLine=/https:\/\//i

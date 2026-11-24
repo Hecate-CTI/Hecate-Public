@@ -13,6 +13,7 @@ risk:
   low_confidence_source: review
   unsupported_claims: block
   publish_check_failed: block
+  # Live BAS miss only — skipped/mock BAS is optional and must not block publish.
   bas_failed: block
   unexecuted_hunt: block
   tlp_amber: block

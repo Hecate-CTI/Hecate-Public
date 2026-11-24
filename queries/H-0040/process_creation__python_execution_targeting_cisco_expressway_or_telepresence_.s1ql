@@ -1,0 +1,1 @@
+EventType = "Process Creation" AND (EndpointOS = "windows" AND ((TgtProcImagePath endswithCIS "\python.exe" OR TgtProcImagePath endswithCIS "\python3.exe" OR TgtProcImagePath endswithCIS "\python2.exe") AND (TgtProcCmdLine containsCIS "expressway" OR TgtProcCmdLine containsCIS "telepresence") AND TgtProcCmdLine containsCIS "https://"))

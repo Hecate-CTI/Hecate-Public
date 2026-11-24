@@ -1,0 +1,2 @@
+DeviceNetworkEvents
+| where (InitiatingProcessFolderPath endswith "/python" or InitiatingProcessFolderPath endswith "/python3" or InitiatingProcessFolderPath endswith "/python2" or InitiatingProcessFolderPath endswith "/usr/bin/python" or InitiatingProcessFolderPath endswith "/usr/bin/python3" or InitiatingProcessFolderPath endswith "/usr/local/bin/python" or InitiatingProcessFolderPath endswith "/usr/local/bin/python3") and (RemotePort in~ ("4372", "443", "8443"))

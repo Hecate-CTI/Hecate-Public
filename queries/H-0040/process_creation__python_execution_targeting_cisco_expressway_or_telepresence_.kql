@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where (FolderPath endswith "\\python.exe" or FolderPath endswith "\\python3.exe" or FolderPath endswith "\\python2.exe") and (ProcessCommandLine contains "expressway" or ProcessCommandLine contains "telepresence") and ProcessCommandLine contains "https://"

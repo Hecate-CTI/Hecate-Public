@@ -1,0 +1,1 @@
+where((process.exe_path=/^.*\\python\.exe$/i OR process.exe_path=/^.*\\python3\.exe$/i OR process.exe_path=/^.*\\python2\.exe$/i) AND (process.cmd_line=/^.*expressway.*$/i OR process.cmd_line=/^.*telepresence.*$/i) AND process.cmd_line=/^.*https:\/\/.*$/i)

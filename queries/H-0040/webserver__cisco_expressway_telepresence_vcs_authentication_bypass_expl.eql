@@ -1,0 +1,1 @@
+any where (url.path like~ ("*/api/*", "*/admin/*", "*/login*", "*/auth*", "*/root*", "*/system*", "*/config*")) and (http.response.status_code like~ (200, 201, 202, 204, 301, 302, 303, 307, 308))

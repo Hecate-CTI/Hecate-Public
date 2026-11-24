@@ -1,0 +1,50 @@
+title: Python Process Connection to Cisco Expressway or TelePresence VCS Management
+  Ports
+id: 594d4c8a-5038-461e-a280-6d7166ad9e2c
+status: experimental
+description: Detects Python interpreter establishing network connections to TCP ports
+  443 or 8443, commonly used for HTTPS management interfaces on Cisco Expressway Series
+  and TelePresence VCS devices. This pattern is consistent with execution of Python-based
+  proof-of-concept exploit tooling targeting CVE-2026-76466, which allows attackers
+  to exploit hard-coded credentials for root access. The connection itself does not
+  indicate authentication status, but the combination of Python execution and management
+  port access aligns with published PoC command-line patterns.
+references:
+- https://github.com/cveForge/CVE-2026-76466
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-24'
+tags:
+- attack.t1190
+logsource:
+  category: network_connection
+  product: linux
+detection:
+  selection_process:
+    Image|endswith:
+    - /python
+    - /python3
+    - /python2
+    - /usr/bin/python
+    - /usr/bin/python3
+    - /usr/local/bin/python
+    - /usr/local/bin/python3
+  selection_port:
+    DestinationPort:
+    - 4372
+    - 443
+    - 8443
+  condition: all of selection_*
+falsepositives:
+- Legitimate Python-based monitoring or management scripts connecting to Cisco collaboration
+  infrastructure
+- Automated API integrations using Python requests libraries for video conferencing
+  administration
+- Security scanning tools written in Python performing vulnerability assessments
+- DevOps automation scripts managing Expressway or TelePresence VCS configurations
+level: medium
+hunt_id: H-0040
+hecate_review:
+  verdict: keep
+  rationale: Validated for Linux Expressway systems; restricted to POSIX paths and
+    target cluster/management ports (4372, 443, 8443).
+x_hecate_synthetic_holdout_status: failed

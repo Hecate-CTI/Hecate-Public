@@ -1,0 +1,1 @@
+"cs-uri-stem" IN ("*/api/*", "*/admin/*", "*/login*", "*/auth*", "*/root*", "*/system*", "*/config*") "sc-status" IN (200, 201, 202, 204, 301, 302, 303, 307, 308)

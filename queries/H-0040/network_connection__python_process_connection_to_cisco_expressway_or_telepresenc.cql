@@ -1,0 +1,1 @@
+Image=/\/python$/i or Image=/\/python3$/i or Image=/\/python2$/i or Image=/\/usr\/bin\/python$/i or Image=/\/usr\/bin\/python3$/i or Image=/\/usr\/local\/bin\/python$/i or Image=/\/usr\/local\/bin\/python3$/i DestinationPort=4372 or DestinationPort=443 or DestinationPort=8443
