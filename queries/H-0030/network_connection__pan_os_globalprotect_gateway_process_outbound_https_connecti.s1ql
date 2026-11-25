@@ -1,0 +1,1 @@
+(ObjectType In ("DNS","Url","IP")) AND (EndpointOS = "linux" AND ((SrcProcImagePath endswithCIS "/pan_comm" OR SrcProcImagePath endswithCIS "/nginx" OR SrcProcImagePath endswithCIS "/httpd") AND (DstPort = "443" AND Initiated = true)))

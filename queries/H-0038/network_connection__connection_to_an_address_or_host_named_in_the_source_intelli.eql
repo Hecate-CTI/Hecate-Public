@@ -1,1 +1,1 @@
-any where DestinationIp=="193.29.224.151" or DestinationIp=="77.221.152.34" or DestinationIp=="138.124.118.69" or DestinationHostname:"profitnow.io"
+any where destination.ip=="193.29.224.151" or destination.ip=="77.221.152.34" or destination.ip=="138.124.118.69" or destination.domain:"profitnow.io"

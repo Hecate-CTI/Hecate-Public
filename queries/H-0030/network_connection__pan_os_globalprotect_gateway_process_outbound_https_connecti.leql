@@ -1,0 +1,1 @@
+where((process.exe_path=/^.*\/pan_comm$/i OR process.exe_path=/^.*\/nginx$/i OR process.exe_path=/^.*\/httpd$/i) AND destination_port=443 AND direction=true)

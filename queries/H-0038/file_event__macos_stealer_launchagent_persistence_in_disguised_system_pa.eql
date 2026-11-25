@@ -1,1 +1,1 @@
-any where (TargetFilename:"*/Library/LaunchAgents/*" and TargetFilename:"*.plist") or (TargetFilename:"*/Library/Caches/com.apple.trustd/*" and TargetFilename:"*com.apple.verified*") or (TargetFilename:"*/Library/Caches/homeenergyd/*" and TargetFilename:"*com.apple.homeenergyd*")
+any where (file.path:"*/Library/LaunchAgents/*" and file.path:"*.plist") or (file.path:"*/Library/Caches/com.apple.trustd/*" and file.path:"*com.apple.verified*") or (file.path:"*/Library/Caches/homeenergyd/*" and file.path:"*com.apple.homeenergyd*")
