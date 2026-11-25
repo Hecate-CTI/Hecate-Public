@@ -1,1 +1,1 @@
-where(process.exe_path=/^.*\/chmod$/i AND process.cmd_line=/^.*\+x com\.apple\.verified.*$/i)
+where(process.exe_path=/^.*\/chmod$/i AND process.cmd_line=/^.*\+x com\.apple\.verified`:.*$/i)

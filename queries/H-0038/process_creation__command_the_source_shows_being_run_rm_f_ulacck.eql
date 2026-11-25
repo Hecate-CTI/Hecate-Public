@@ -1,1 +1,1 @@
-any where (process.executable like~ ("*/bin/rm", "*/usr/bin/rm")) and process.command_line:"*-f .UlaccK*"
+any where Image:"*/rm" and CommandLine:"*-f .UlaccK*"

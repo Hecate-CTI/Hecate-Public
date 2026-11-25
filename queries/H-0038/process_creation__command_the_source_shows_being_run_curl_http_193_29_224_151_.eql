@@ -1,1 +1,1 @@
-any where process.executable:"*/curl" and process.command_line:"*http://193.29.224.151/92392991a0cca55?force=1*"
+any where Image:"*/curl" and CommandLine:"*http://193.29.224.151/92392991a0cca55?force=1*"

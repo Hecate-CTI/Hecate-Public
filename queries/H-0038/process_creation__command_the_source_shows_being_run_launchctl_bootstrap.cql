@@ -1,1 +1,1 @@
-event_platform=/^Lin$/i ImageFileName=/\/launchctl$/i CommandLine=/bootstrap/i
+event_platform=/^Mac$/i ImageFileName=/\/launchctl$/i CommandLine=/bootstrap/i

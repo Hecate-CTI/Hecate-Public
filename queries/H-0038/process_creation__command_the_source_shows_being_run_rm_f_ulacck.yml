@@ -1,25 +1,23 @@
 title: 'Command the source shows being run: rm -f .UlaccK'
-id: 704cca40-c087-42fe-8372-91da9322020a
+id: b33b4ed9-db23-47f3-8e7b-fc4c0ce7a6bd
 status: experimental
 description: 'Deterministic rule built from a command quoted in the primary source, with no model involvement.
   The source shows this command being run: "rm -f .UlaccK)".'
-references: []
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
 author: hecate (auto-generated from commands quoted in the source - requires analyst review)
-date: '2026-11-15'
+date: '2026-11-25'
 tags:
 - attack.t1070.004
 logsource:
   category: process_creation
-  product: linux
+  product: macos
 detection:
   selection:
-    Image|endswith:
-      - /bin/rm
-      - /usr/bin/rm
+    Image|endswith: /rm
     CommandLine|contains: -f .UlaccK
   condition: selection
 falsepositives:
 - Administrators or software running the same command or creating the task for legitimate reasons
 level: low
 hunt_id: H-0038
-x_hecate_synthetic_holdout_status: failed

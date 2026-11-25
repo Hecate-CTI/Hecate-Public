@@ -1,1 +1,1 @@
-any where process.executable:"*/bash" and process.command_line:"*.UlaccK*"
+any where Image:"*/bash" and CommandLine:"*.UlaccK*"

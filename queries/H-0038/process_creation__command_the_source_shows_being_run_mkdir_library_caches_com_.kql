@@ -1,2 +1,2 @@
 DeviceProcessEvents
-| where FolderPath endswith "/mkdir" and ProcessCommandLine contains "/Library/Caches/com.apple.trustd"
+| where FolderPath endswith "/mkdir" and ProcessCommandLine contains "/Library/Caches/com.apple.trustd\"`:"

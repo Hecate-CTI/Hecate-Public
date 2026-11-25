@@ -1,1 +1,1 @@
-event_platform=/^Lin$/i ImageFileName=/\/bash$/i CommandLine=/\.UlaccK/i
+event_platform=/^Mac$/i ImageFileName=/\/bash$/i CommandLine=/\.UlaccK/i

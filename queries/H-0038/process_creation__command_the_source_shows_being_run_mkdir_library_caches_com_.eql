@@ -1,1 +1,1 @@
-any where process.executable:"*/mkdir" and process.command_line:"*/Library/Caches/com.apple.trustd*"
+any where Image:"*/mkdir" and CommandLine:"*/Library/Caches/com.apple.trustd\"`:*"

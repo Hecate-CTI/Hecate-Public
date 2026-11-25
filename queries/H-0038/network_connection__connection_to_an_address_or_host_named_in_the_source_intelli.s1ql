@@ -1,1 +1,1 @@
-(ObjectType In ("DNS","Url","IP")) AND (EndpointOS = "osx" AND (DstIP = "193.29.224.151" OR DstIP = "77.221.152.34" OR DstIP = "138.124.118.69" OR (Url = "profitnow.io" OR DnsRequest = "profitnow.io")))
+(ObjectType In ("DNS","Url","IP")) AND (EndpointOS = "osx" AND (DstIP = "193.29.224.151" OR DstIP = "77.221.152.34" OR (DstIP = "138.124.118.69" AND DstPort = "8133") OR (Url = "profitnow.io" OR DnsRequest = "profitnow.io")))

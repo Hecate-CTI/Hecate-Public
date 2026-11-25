@@ -1,16 +1,17 @@
 title: 'Command the source shows being run: launchctl bootstrap'
-id: 89c90243-5f8a-44f5-9251-f17e78d80283
+id: bfec4e0c-9ae0-4f7b-93e3-34795f77e658
 status: experimental
 description: 'Deterministic rule built from a command quoted in the primary source, with no model involvement.
-  The source shows this command being run: "launchctl bootstrap gui/501 /Users/m1/Library/LaunchAgents/com.apple.softwareupdated.plist".'
-references: []
+  The source shows this command being run: "launchctl bootstrap gui/501 /Users/m1/Library/LaunchAgents/com.apple.softwareupdated.plist`".'
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
 author: hecate (auto-generated from commands quoted in the source - requires analyst review)
-date: '2026-11-15'
+date: '2026-11-25'
 tags:
 - attack.t1543.001
 logsource:
   category: process_creation
-  product: linux
+  product: macos
 detection:
   selection:
     Image|endswith: /launchctl
@@ -20,4 +21,3 @@ falsepositives:
 - Administrators or software running the same command or creating the task for legitimate reasons
 level: medium
 hunt_id: H-0038
-x_hecate_synthetic_holdout_status: failed

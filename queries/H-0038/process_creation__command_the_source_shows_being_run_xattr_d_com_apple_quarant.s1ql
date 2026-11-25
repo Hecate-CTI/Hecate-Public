@@ -1,1 +1,1 @@
-EventType = "Process Creation" AND (EndpointOS = "linux" AND (TgtProcImagePath endswithCIS "/xattr" AND TgtProcCmdLine containsCIS "-d com.apple.quarantine"))
+EventType = "Process Creation" AND (EndpointOS = "osx" AND (TgtProcImagePath endswithCIS "/xattr" AND TgtProcCmdLine containsCIS "-d com.apple.quarantine"))

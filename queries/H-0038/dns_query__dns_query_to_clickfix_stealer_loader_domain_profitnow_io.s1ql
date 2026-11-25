@@ -1,0 +1,1 @@
+ObjectType = "DNS" AND (EndpointOS = "osx" AND DnsRequest = "profitnow.io")

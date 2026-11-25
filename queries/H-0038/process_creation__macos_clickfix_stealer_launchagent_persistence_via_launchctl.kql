@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where (FolderPath endswith "/launchctl" and ProcessCommandLine contains "bootstrap") and ProcessCommandLine endswith "/Library/LaunchAgents/com.apple.softwareupdated.plist"

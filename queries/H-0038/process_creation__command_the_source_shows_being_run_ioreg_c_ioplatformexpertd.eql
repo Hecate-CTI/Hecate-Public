@@ -1,1 +1,1 @@
-any where process.executable:"*/ioreg" and process.command_line:"*-c IOPlatformExpertDevice*"
+any where Image:"*/ioreg" and CommandLine:"*-c IOPlatformExpertDevice*"

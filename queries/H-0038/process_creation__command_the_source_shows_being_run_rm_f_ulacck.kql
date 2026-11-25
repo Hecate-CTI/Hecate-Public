@@ -1,2 +1,2 @@
 DeviceProcessEvents
-| where (FolderPath endswith "/bin/rm" or FolderPath endswith "/usr/bin/rm") and ProcessCommandLine contains "-f .UlaccK"
+| where FolderPath endswith "/rm" and ProcessCommandLine contains "-f .UlaccK"

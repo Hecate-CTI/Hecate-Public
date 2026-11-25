@@ -1,1 +1,1 @@
-any where process.executable:"*/chmod" and process.command_line:"*+x com.apple.verified*"
+any where Image:"*/chmod" and CommandLine:"*+x com.apple.verified`:*"

@@ -1,1 +1,1 @@
-Image="*/mkdir" CommandLine="*/Library/Caches/com.apple.trustd*"
+Image="*/mkdir" CommandLine="*/Library/Caches/com.apple.trustd\"`:*"

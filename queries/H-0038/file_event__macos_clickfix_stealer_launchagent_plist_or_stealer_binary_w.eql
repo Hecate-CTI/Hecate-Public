@@ -1,0 +1,1 @@
+any where TargetFilename:"*/Library/LaunchAgents/com.apple.softwareupdated.plist" or TargetFilename:"*/Library/Caches/com.apple.trustd/com.apple.verified" or TargetFilename:"*/Library/Caches/homeenergyd/com.apple.homeenergyd" or (TargetFilename:"/Users/*" and TargetFilename:"*/Library/Caches/com.apple.softwareupdate/SoftwareUpdate")

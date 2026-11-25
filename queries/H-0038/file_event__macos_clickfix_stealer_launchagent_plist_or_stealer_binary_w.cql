@@ -1,0 +1,1 @@
+TargetFilename=/\/Library\/LaunchAgents\/com\.apple\.softwareupdated\.plist$/i or TargetFilename=/\/Library\/Caches\/com\.apple\.trustd\/com\.apple\.verified$/i or TargetFilename=/\/Library\/Caches\/homeenergyd\/com\.apple\.homeenergyd$/i or (TargetFilename=/^\/Users\//i TargetFilename=/\/Library\/Caches\/com\.apple\.softwareupdate\/SoftwareUpdate$/i)

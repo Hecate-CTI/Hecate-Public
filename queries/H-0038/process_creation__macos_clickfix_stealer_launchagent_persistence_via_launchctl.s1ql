@@ -1,0 +1,1 @@
+EventType = "Process Creation" AND (EndpointOS = "osx" AND ((TgtProcImagePath endswithCIS "/launchctl" AND TgtProcCmdLine containsCIS "bootstrap") AND TgtProcCmdLine endswithCIS "/Library/LaunchAgents/com.apple.softwareupdated.plist"))

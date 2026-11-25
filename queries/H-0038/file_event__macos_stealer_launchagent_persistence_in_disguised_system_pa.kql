@@ -1,2 +1,0 @@
-DeviceFileEvents
-| where (FolderPath contains "/Library/LaunchAgents/" and FolderPath endswith ".plist") or (FolderPath contains "/Library/Caches/com.apple.trustd/" and FolderPath contains "com.apple.verified") or (FolderPath contains "/Library/Caches/homeenergyd/" and FolderPath contains "com.apple.homeenergyd")
