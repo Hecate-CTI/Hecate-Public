@@ -67,7 +67,7 @@ jobs:
           HECATE_WORKSPACE: ${{ github.workspace }}
           SPLUNK_HOST: ${{ secrets.SPLUNK_HOST }}
           SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
-          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'false' }}
+          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'true' }}
           TARGET_INPUT: ${{ inputs.target }}
           RECONCILE_INPUT: ${{ inputs.reconcile }}
         run: |

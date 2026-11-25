@@ -61,7 +61,7 @@ jobs:
           HECATE_WORKSPACE: ${{ github.workspace }}
           SPLUNK_HOST: ${{ secrets.SPLUNK_HOST }}
           SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
-          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'false' }}
+          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'true' }}
         run: |
           # Use live mode if live secrets are provided, otherwise simulated dry-run
           if [ -n "$SPLUNK_TOKEN" ] && [ -n "$SPLUNK_HOST" ]; then
