@@ -1,0 +1,42 @@
+title: macOS ClickFix Stealer LaunchAgent Plist or Stealer Binary Written to Disk
+id: ab5b32e8-15fb-4fdb-acc0-60f0af2a817f
+status: experimental
+description: Matches creation of the source-reported LaunchAgent plist or stealer payload paths. The SoftwareUpdate
+  payload selector is restricted to user-home caches. These are reference artifact leads; file creation
+  alone does not prove loader execution, a successful LaunchAgent load or credential theft.
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-25'
+tags:
+- attack.t1036.005
+- attack.t1543.001
+logsource:
+  category: file_event
+  product: macos
+detection:
+  selection_launchagent:
+    TargetFilename|endswith: /Library/LaunchAgents/com.apple.softwareupdated.plist
+  selection_stealer_verified:
+    TargetFilename|endswith: /Library/Caches/com.apple.trustd/com.apple.verified
+  selection_stealer_homeenergyd:
+    TargetFilename|endswith: /Library/Caches/homeenergyd/com.apple.homeenergyd
+  condition: 1 of selection_*
+  selection_softwareupdate:
+    TargetFilename|startswith: /Users/
+    TargetFilename|endswith: /Library/Caches/com.apple.softwareupdate/SoftwareUpdate
+falsepositives:
+- Legitimate Apple software updates writing plist files with similar naming conventions, though the exact
+  filenames and cache subdirectory paths matched here are not used by genuine Apple components
+- Security tooling or MDM solutions that enumerate or write LaunchAgent plists during enrollment or remediation
+  workflows
+level: medium
+hunt_id: H-0038
+hecate_review:
+  verdict: keep
+hecate_source_review:
+  reviewer: Codex
+  status: corrected_unvalidated
+  changes:
+  - Use LaunchAgent mapping; the source does not report Login Items.
+  - Include the reported SoftwareUpdate payload in user caches, and qualify file-presence conclusions.

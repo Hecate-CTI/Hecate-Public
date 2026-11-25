@@ -1,0 +1,1 @@
+TranspiledQuery(target='sentinel_kql', platform_name='Microsoft Defender / Microsoft Sentinel', dialect='kql', file_extension='.kql', query=None, success=False, error_message='MDE mapping cannot preserve the Initiated direction predicate; an explicit direction mapping is required', validation=None)

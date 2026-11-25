@@ -1,0 +1,1 @@
+where(process.exe_path=/^.*\/launchctl$/i AND process.cmd_line=/^.*bootstrap.*$/i AND process.cmd_line=/^.*\/Library\/LaunchAgents\/com\.apple\.softwareupdated\.plist$/i)

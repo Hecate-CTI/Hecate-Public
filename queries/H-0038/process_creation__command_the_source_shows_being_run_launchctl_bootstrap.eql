@@ -1,1 +1,1 @@
-any where process.executable:"*/launchctl" and process.command_line:"*bootstrap*"
+any where Image:"*/launchctl" and CommandLine:"*bootstrap*"

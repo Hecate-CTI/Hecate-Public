@@ -1,0 +1,1 @@
+where(file.path=/^.*\/Library\/LaunchAgents\/com\.apple\.softwareupdated\.plist$/i OR file.path=/^.*\/Library\/Caches\/com\.apple\.trustd\/com\.apple\.verified$/i OR file.path=/^.*\/Library\/Caches\/homeenergyd\/com\.apple\.homeenergyd$/i OR file.path=/^\/Users\/.*$/i AND file.path=/^.*\/Library\/Caches\/com\.apple\.softwareupdate\/SoftwareUpdate$/i)

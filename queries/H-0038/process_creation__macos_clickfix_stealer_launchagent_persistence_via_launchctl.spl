@@ -1,0 +1,1 @@
+Image="*/launchctl" CommandLine="*bootstrap*" CommandLine="*/Library/LaunchAgents/com.apple.softwareupdated.plist"

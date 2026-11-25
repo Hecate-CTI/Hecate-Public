@@ -1,0 +1,36 @@
+title: macOS ClickFix Stealer LaunchAgent Persistence via launchctl Bootstrap with Masquerading Plist
+id: a79b5535-878a-49c5-b2ce-25e3f5cdc448
+status: experimental
+description: Matches launchctl bootstrap referencing the LaunchAgent filename in the source report. This
+  is a registration-attempt lead; confirm a successful load and subsequent execution before claiming persistence.
+  Legitimate cleanup with bootout or a status query is not this behavior.
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-25'
+tags:
+- attack.t1036.005
+- attack.t1543.001
+logsource:
+  category: process_creation
+  product: macos
+detection:
+  selection_launchctl:
+    Image|endswith: /launchctl
+    CommandLine|contains: bootstrap
+  selection_plist:
+    CommandLine|endswith: /Library/LaunchAgents/com.apple.softwareupdated.plist
+  condition: selection_launchctl and selection_plist
+falsepositives:
+- A legitimate Apple binary named com.apple.softwareupdated is unlikely, but administrators scripting
+  LaunchAgent management with similarly named plists could trigger this; verify the plist content and
+  parent process context.
+level: high
+hunt_id: H-0038
+hecate_review:
+  verdict: keep
+hecate_source_review:
+  reviewer: Codex
+  status: corrected_unvalidated
+  changes:
+  - Require bootstrap explicitly; matching the plist alone also catches cleanup commands.

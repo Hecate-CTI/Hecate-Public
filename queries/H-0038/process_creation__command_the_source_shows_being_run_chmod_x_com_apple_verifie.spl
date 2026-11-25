@@ -1,1 +1,1 @@
-Image="*/chmod" CommandLine="*+x com.apple.verified*"
+Image="*/chmod" CommandLine="*+x com.apple.verified`:*"

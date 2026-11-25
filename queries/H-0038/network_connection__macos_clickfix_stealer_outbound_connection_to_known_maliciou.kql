@@ -1,0 +1,2 @@
+DeviceNetworkEvents
+| where RemoteIP in~ ("193.29.224.151", "138.124.118.69", "77.221.152.34")

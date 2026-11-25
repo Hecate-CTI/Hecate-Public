@@ -1,0 +1,1 @@
+QueryName=/^profitnow\.io$/i

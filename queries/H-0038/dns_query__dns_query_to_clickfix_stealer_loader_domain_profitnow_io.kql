@@ -1,0 +1,1 @@
+_Im_Dns | where DnsQuery =~ "profitnow.io"

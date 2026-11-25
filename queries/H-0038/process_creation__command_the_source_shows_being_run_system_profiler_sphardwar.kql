@@ -1,2 +1,2 @@
 DeviceProcessEvents
-| where FolderPath endswith "/system_profiler" and ProcessCommandLine contains "SPHardwareDataType"
+| where FolderPath endswith "/system_profiler" and ProcessCommandLine contains "SPHardwareDataType`:"

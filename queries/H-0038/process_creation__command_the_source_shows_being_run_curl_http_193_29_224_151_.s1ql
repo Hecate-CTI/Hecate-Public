@@ -1,1 +1,1 @@
-EventType = "Process Creation" AND (EndpointOS = "linux" AND (TgtProcImagePath endswithCIS "/curl" AND TgtProcCmdLine = "*http://193.29.224.151/92392991a0cca55*force=1*"))
+EventType = "Process Creation" AND (EndpointOS = "osx" AND (TgtProcImagePath endswithCIS "/curl" AND TgtProcCmdLine = "*http://193.29.224.151/92392991a0cca55*force=1*"))
