@@ -1,1 +1,1 @@
-TranspiledQuery(target='splunk_spl', platform_name='Splunk Enterprise / Cloud (SPL)', dialect='spl', file_extension='.spl', query='Image="*/mkdir" CommandLine="*/Library/Caches/com.apple.trustd*"', success=True, error_message=None, validation=QueryValidationResult(target='splunk_spl', dialect='spl', query='Image="*/mkdir" CommandLine="*/Library/Caches/com.apple.trustd*"', is_valid=True, sanity_score=1.0, issues=[]))
+Image="*/mkdir" CommandLine="*/Library/Caches/com.apple.trustd*"
