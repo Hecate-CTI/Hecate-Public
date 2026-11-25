@@ -1,23 +1,25 @@
-title: 'Command the source shows being run: mkdir /Library/Caches/com.apple.trustd"`:'
+title: mkdir creating Library/Caches/com.apple.trustd cache path
 id: e51d47ce-02a2-4175-a799-7609dd07aca5
 status: experimental
-description: 'Deterministic rule built from a command quoted in the primary source, with no model involvement.
-  The source shows this command being run: "mkdir -p "$HOME/Library/Caches/com.apple.trustd"`: Creates
-  a directory on the target''s system with a name".'
+description: Detects mkdir creating a path under Library/Caches/com.apple.trustd,
+  observed in a macOS ClickFix stealer campaign where the loader staged tooling
+  under a trustd-named cache directory. Correlate with Terminal/curl lineage.
 references:
 - https://www.huntress.com/blog/mac-crypto-draining-malware
-author: hecate (auto-generated from commands quoted in the source - requires analyst review)
-date: '2026-11-25'
-tags: []
+author: hecate (source-reviewed)
+date: "2026-11-25"
+tags:
+- attack.t1059.004
+- attack.t1036.005
 logsource:
   category: process_creation
   product: macos
 detection:
   selection:
     Image|endswith: /mkdir
-    CommandLine|contains: '/Library/Caches/com.apple.trustd"`:'
+    CommandLine|contains: /Library/Caches/com.apple.trustd
   condition: selection
 falsepositives:
-- Administrators or software running the same command or creating the task for legitimate reasons
-level: low
+- Legitimate software creating a similarly named cache directory
+level: medium
 hunt_id: H-0038

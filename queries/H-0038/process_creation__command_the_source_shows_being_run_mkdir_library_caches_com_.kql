@@ -1,2 +1,1 @@
-DeviceProcessEvents
-| where FolderPath endswith "/mkdir" and ProcessCommandLine contains "/Library/Caches/com.apple.trustd\"`:"
+TranspiledQuery(target='sentinel_kql', platform_name='Microsoft Defender / Microsoft Sentinel', dialect='kql', file_extension='.kql', query='DeviceProcessEvents\n| where FolderPath endswith "/mkdir" and ProcessCommandLine contains "/Library/Caches/com.apple.trustd"', success=True, error_message=None, validation=QueryValidationResult(target='sentinel_kql', dialect='kql', query='DeviceProcessEvents\n| where FolderPath endswith "/mkdir" and ProcessCommandLine contains "/Library/Caches/com.apple.trustd"', is_valid=True, sanity_score=1.0, issues=[]))
