@@ -75,7 +75,7 @@ jobs:
           HECATE_WORKSPACE: ${{ github.workspace }}
           SPLUNK_HOST: ${{ secrets.SPLUNK_HOST }}
           SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
-          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'false' }}
+          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'true' }}
           HUNT_INPUT: ${{ inputs.hunt_id || 'all' }}
           TARGET_INPUT: ${{ inputs.target }}
           DRY_RUN_INPUT: ${{ inputs.dry_run }}
@@ -102,7 +102,7 @@ jobs:
           HECATE_WORKSPACE: ${{ github.workspace }}
           SPLUNK_HOST: ${{ secrets.SPLUNK_HOST }}
           SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
-          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'false' }}
+          SPLUNK_VERIFY_SSL: ${{ secrets.SPLUNK_VERIFY_SSL || 'true' }}
           DRY_RUN_INPUT: ${{ inputs.dry_run }}
         run: |
           if [ "$DRY_RUN_INPUT" = "true" ] || [ -z "$SPLUNK_TOKEN" ] || [ -z "$SPLUNK_HOST" ]; then
