@@ -1,33 +1,44 @@
-title: FortiClient FortiVRS Privileged Session Component Spawning Child Process
+title: FortiVRS Spawning Script Interpreter or LOLBIN After Privileged Session Abuse
 id: 0682b89f-ea69-4abb-8a79-0e7b81c9c8c4
 status: experimental
-description: Detects FortiVRS.exe (FortiClient FortiPAM privileged session component) spawning child processes,
-  which may indicate exploitation of CVE-2026-121529 CORS misconfiguration leading to remote code execution
-  via the local API endpoint. The vulnerability allows browser-delivered cross-origin requests to execute
-  commands through the privileged session component.
+description: Detects FortiVRS.exe (FortiPAM privileged session component) spawning a
+  script interpreter or common living-off-the-land binary. Tuned for CVE-2026-121529
+  CORS/local-API abuse rather than any child of FortiVRS. Correlate with cross-origin
+  POSTs to the local privileged-session API on 127.0.0.1:9191.
 references:
 - https://github.com/tc4dy/CVE-2026-121529-Toolkit
-author: hecate (auto-generated draft - requires analyst review)
-date: '2026-11-14'
+author: hecate (portfolio triage)
+date: "2026-11-14"
+modified: "2026-11-26"
 tags:
-- attack.t1059.006
+- attack.t1059.001
+- attack.t1059.003
 - attack.t1059.007
 - attack.t1190
 logsource:
   category: process_creation
   product: windows
 detection:
-  selection:
+  selection_parent:
     ParentImage|endswith: \FortiVRS.exe
-  filter_self:
-    Image|endswith: \FortiVRS.exe
-  condition: selection and not filter_self
+  selection_child:
+    Image|endswith:
+    - \cmd.exe
+    - \powershell.exe
+    - \pwsh.exe
+    - \wscript.exe
+    - \cscript.exe
+    - \mshta.exe
+    - \curl.exe
+    - \certutil.exe
+    - \bitsadmin.exe
+    - \rundll32.exe
+    - \regsvr32.exe
+  condition: selection_parent and selection_child
 falsepositives:
-- Legitimate FortiClient administrative operations that spawn helper processes
-- FortiClient updates or maintenance tasks
-- Legitimate privileged session management workflows in FortiPAM
+- Rare FortiClient maintenance that legitimately shells out (validate publisher and command line)
 level: high
 hunt_id: H-0036
 hecate_review:
   verdict: keep
-x_hecate_synthetic_holdout_status: failed
+  notes: Narrowed from any FortiVRS child to script/LOLBIN children only.

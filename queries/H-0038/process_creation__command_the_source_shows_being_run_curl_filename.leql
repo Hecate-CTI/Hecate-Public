@@ -1,1 +1,0 @@
-where(process.exe_path=/^.*\/curl$/i AND process.cmd_line=/^.*filename\]`:.*$/i)

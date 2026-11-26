@@ -1,1 +1,0 @@
-where(query=/^profitnow\.io$/i OR query=/^.*\.profitnow\.io$/i)

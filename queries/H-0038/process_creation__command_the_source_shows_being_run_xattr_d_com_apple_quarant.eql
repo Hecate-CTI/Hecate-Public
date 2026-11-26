@@ -1,1 +1,0 @@
-any where Image:"*/xattr" and CommandLine:"*-d com.apple.quarantine*"

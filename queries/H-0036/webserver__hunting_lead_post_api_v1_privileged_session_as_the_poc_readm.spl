@@ -1,1 +1,1 @@
-"cs-method"="POST" "cs-uri-stem"="/api/v1/privileged/session"
+cs-method="POST" cs-uri-stem="*/api/v1/privileged/session" cs-host IN ("*127.0.0.1:9191*","*localhost:9191*") (Origin="*://*" OR cs-Referer="*://*") NOT (Origin IN ("*127.0.0.1*","*localhost*") OR cs-Referer IN ("*127.0.0.1*","*localhost*"))

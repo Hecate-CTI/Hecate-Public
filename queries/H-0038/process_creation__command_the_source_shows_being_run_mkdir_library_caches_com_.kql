@@ -1,2 +1,0 @@
-DeviceProcessEvents
-| where FolderPath endswith "/mkdir" and ProcessCommandLine contains "/Library/Caches/com.apple.trustd"

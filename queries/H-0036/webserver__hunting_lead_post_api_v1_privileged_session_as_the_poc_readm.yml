@@ -1,25 +1,46 @@
-title: 'Hunting lead: POST /api/v1/privileged/session as the PoC README documents'
+title: Cross-Origin POST to FortiVRS Local Privileged Session API
 id: 82aa498b-a7b0-471d-b4e7-95d8d21a58d7
 status: experimental
-description: 'Deterministic candidate from a documented reference procedure; not evidence of an observed
-  intrusion or successful exploitation. The source documents this procedure: "POST /api/v1/privileged/session".'
+description: Detects POST /api/v1/privileged/session against the FortiVRS local API
+  (127.0.0.1/localhost:9191) when an Origin/Referer indicates a cross-site browser
+  caller. This is the CORS abuse shape for CVE-2026-121529; same-origin or non-browser
+  management clients should be filtered. Map Origin/Referer field names to your proxy
+  or browser telemetry at deploy time.
 references:
 - https://github.com/tc4dy/CVE-2026-121529-Toolkit
-author: hecate (auto-generated from commands quoted in the source - requires analyst review)
-date: '2026-11-14'
-tags: []
+author: hecate (portfolio triage)
+date: "2026-11-14"
+modified: "2026-11-26"
+tags:
+- attack.t1190
 logsource:
   category: webserver
 detection:
-  selection:
+  selection_req:
     cs-method: POST
-    cs-uri-stem: /api/v1/privileged/session
-  condition: selection
+    cs-uri-stem|endswith: /api/v1/privileged/session
+  selection_local:
+    cs-host|contains:
+    - 127.0.0.1:9191
+    - localhost:9191
+  selection_origin:
+    Origin|contains: "://"
+  selection_referer:
+    cs-Referer|contains: "://"
+  filter_same_origin:
+    Origin|contains:
+    - 127.0.0.1
+    - localhost
+  filter_same_referer:
+    cs-Referer|contains:
+    - 127.0.0.1
+    - localhost
+  condition: selection_req and selection_local and (selection_origin or selection_referer) and not filter_same_origin and not filter_same_referer
 falsepositives:
-- Legitimate clients of the product send POST /api/v1/privileged/session too. Separate the exploit by
-  what the log cannot show here, such as a missing Authorization header or an unexpected client, using
-  a network capture or the product's own audit log
-level: low
+- Local troubleshooting tools that set an Origin header incorrectly
+- Browser extensions probing localhost APIs
+level: medium
 hunt_id: H-0036
-x_hecate_replay_matched: true
-x_hecate_synthetic_holdout_status: passed
+hecate_review:
+  verdict: keep
+  notes: Requires local API host plus cross-origin Origin/Referer; dropped bare product API POST.

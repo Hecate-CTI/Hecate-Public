@@ -1,2 +1,0 @@
-DeviceProcessEvents
-| where FolderPath endswith "/rm" and ProcessCommandLine contains "-f .UlaccK"

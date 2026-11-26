@@ -1,1 +1,1 @@
-ParentImage="*\\FortiVRS.exe" NOT Image="*\\FortiVRS.exe"
+ParentImage="*\\FortiVRS.exe" Image IN ("*\\cmd.exe","*\\powershell.exe","*\\pwsh.exe","*\\wscript.exe","*\\cscript.exe","*\\mshta.exe","*\\curl.exe","*\\certutil.exe","*\\bitsadmin.exe","*\\rundll32.exe","*\\regsvr32.exe")

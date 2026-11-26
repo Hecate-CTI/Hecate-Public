@@ -1,1 +1,0 @@
-where((destination_address=/^193\.29\.224\.151$/i OR destination_address=/^77\.221\.152\.34$/i OR destination_address=/^138\.124\.118\.69$/i) AND direction=true)

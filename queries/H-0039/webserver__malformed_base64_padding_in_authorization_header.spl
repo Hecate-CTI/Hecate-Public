@@ -1,0 +1,1 @@
+(cs-Authorization="*=[A-Za-z0-9+/]*" OR Authorization="*=[A-Za-z0-9+/]*")
