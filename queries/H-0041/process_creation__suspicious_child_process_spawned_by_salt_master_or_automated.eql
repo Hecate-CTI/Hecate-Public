@@ -1,0 +1,1 @@
+any where (process.parent.executable like~ ("*salt-master*", "*AutomatedProvisioner*")) and (process.executable like~ ("*/id", "*/curl", "*/wget", "*/bash", "*/sh"))

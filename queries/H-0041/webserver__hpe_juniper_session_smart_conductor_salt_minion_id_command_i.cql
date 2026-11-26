@@ -1,0 +1,1 @@
+"cs-uri-stem"=/\/salt\//i or "cs-uri-stem"=/\/key\//i or "cs-uri-stem"=/\/minion\//i "cs-uri-query"=/;/i or "cs-uri-query"=/\|/i or "cs-uri-query"=/`/i or "cs-uri-query"=/\$\(/i or "cs-uri-query"=/\$\{/i or "cs-uri-query"=/&&/i or "cs-uri-query"=/\|\|/i

@@ -1,0 +1,1 @@
+Image IN ("*/salt-master", "*/AutomatedProvisioner") Initiated=true NOT (DestinationIp="10.0.0.0/8" OR DestinationIp="172.16.0.0/12" OR DestinationIp="192.168.0.0/16" OR DestinationIp="127.0.0.0/8")

@@ -1,0 +1,38 @@
+title: Suspicious Child Process Spawned by Salt Master or AutomatedProvisioner
+id: bf802f71-4beb-4c13-ae8b-550cde29a1ad
+status: experimental
+description: Detects execution of system commands (id, curl, wget, bash) as child processes of Salt master
+  service or AutomatedProvisioner component, consistent with CVE-2026-103406 exploitation where adversaries
+  inject OS commands through crafted salt minion IDs to achieve remote code execution on HPE Juniper Session
+  Smart Conductor and Router nodes.
+references:
+- https://nvd.nist.gov/vuln/detail/CVE-2026-103406
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-26'
+tags:
+- attack.t1190
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_parent:
+    ParentImage|contains:
+    - salt-master
+    - AutomatedProvisioner
+  selection_child:
+    Image|endswith:
+    - /id
+    - /curl
+    - /wget
+    - /bash
+    - /sh
+  condition: selection_parent and selection_child
+falsepositives:
+- Legitimate Salt orchestration tasks executing system commands for configuration management
+- Automated provisioning workflows that invoke shell utilities for device setup
+- Administrative maintenance scripts triggered through Salt master
+level: high
+hunt_id: H-0041
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: failed

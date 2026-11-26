@@ -1,0 +1,40 @@
+title: HPE Juniper Session Smart Conductor Salt Minion ID Command Injection Attempt
+id: 2356df0e-9b6e-4b9a-bd92-2b228c2a5750
+status: experimental
+description: Detects HTTP requests to Session Smart Conductor key management interface endpoints containing
+  shell metacharacters in URI parameters that may indicate CVE-2026-103406 exploitation attempts. Adversaries
+  submit specially crafted salt minion IDs with command injection payloads to achieve remote code execution
+  as root.
+references:
+- https://nvd.nist.gov/vuln/detail/CVE-2026-103406
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-26'
+tags:
+- attack.t1190
+logsource:
+  category: webserver
+detection:
+  selection_endpoint:
+    cs-uri-stem|contains:
+    - /salt/
+    - /key/
+    - /minion/
+  selection_injection:
+    cs-uri-query|contains:
+    - ;
+    - '|'
+    - '`'
+    - $(
+    - ${
+    - '&&'
+    - '||'
+  condition: selection_endpoint and selection_injection
+falsepositives:
+- Legitimate salt minion registrations with unusual naming conventions containing special characters
+- Automated scanning or vulnerability assessment tools testing for injection vulnerabilities
+- Web application firewalls or security tools performing validation tests
+level: high
+hunt_id: H-0041
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: failed

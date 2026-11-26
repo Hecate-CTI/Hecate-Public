@@ -1,0 +1,1 @@
+where((parent_process.exe_path=/^.*salt-master.*$/i OR parent_process.exe_path=/^.*AutomatedProvisioner.*$/i) AND (process.exe_path=/^.*\/id$/i OR process.exe_path=/^.*\/curl$/i OR process.exe_path=/^.*\/wget$/i OR process.exe_path=/^.*\/bash$/i OR process.exe_path=/^.*\/sh$/i))
