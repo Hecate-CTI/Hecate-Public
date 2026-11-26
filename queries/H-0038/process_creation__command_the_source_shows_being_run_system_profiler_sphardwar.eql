@@ -1,1 +1,1 @@
-any where Image:"*/system_profiler" and CommandLine:"*SPHardwareDataType`:*"
+any where process.executable:"*/system_profiler" and process.command_line:"*SPHardwareDataType*"

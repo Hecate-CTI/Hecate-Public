@@ -1,1 +1,0 @@
-(TargetFilename=/\/Library\/LaunchAgents\//i TargetFilename=/\.plist$/i) or (TargetFilename=/\/Library\/Caches\/com\.apple\.trustd\//i TargetFilename=/com\.apple\.verified/i) or (TargetFilename=/\/Library\/Caches\/homeenergyd\//i TargetFilename=/com\.apple\.homeenergyd/i)

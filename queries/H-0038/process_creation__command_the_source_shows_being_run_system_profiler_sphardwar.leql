@@ -1,1 +1,1 @@
-where(process.exe_path=/^.*\/system_profiler$/i AND process.cmd_line=/^.*SPHardwareDataType`:.*$/i)
+where(process.exe_path=/^.*\/system_profiler$/i AND process.cmd_line=/^.*SPHardwareDataType.*$/i)
