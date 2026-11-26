@@ -1,0 +1,1 @@
+any where (url.path like~ ("*/salt/*", "*/key/*", "*/minion/*")) and (url.query like~ ("*;*", "*|*", "*`*", "*$(*", "*${*", "*&&*", "*||*"))

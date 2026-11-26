@@ -1,0 +1,39 @@
+title: Outbound Connection from Salt Master or AutomatedProvisioner Process
+id: 49a834cc-c2d2-40ea-9c98-87466ff766fb
+status: experimental
+description: Detects outbound network connections initiated by Salt master service or AutomatedProvisioner
+  component processes on HPE Juniper Session Smart Conductor or Router nodes. Adversaries exploiting CVE-2026-103406
+  inject OS commands into salt minion IDs, causing the Salt master or AutomatedProvisioner to execute
+  arbitrary commands as root, often establishing outbound connections for command-and-control or data
+  exfiltration.
+references:
+- https://nvd.nist.gov/vuln/detail/CVE-2026-103406
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-26'
+tags:
+- attack.t1190
+logsource:
+  category: network_connection
+  product: linux
+detection:
+  selection:
+    Image|endswith:
+    - /salt-master
+    - /AutomatedProvisioner
+    Initiated: true
+  filter:
+    DestinationIp|cidr:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+    - 127.0.0.0/8
+  condition: selection and not filter
+falsepositives:
+- Legitimate Salt master communication with external package repositories or update servers
+- AutomatedProvisioner downloading firmware or configuration updates from vendor infrastructure
+- Administrative tasks involving external API calls or telemetry reporting
+level: high
+hunt_id: H-0041
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: unavailable

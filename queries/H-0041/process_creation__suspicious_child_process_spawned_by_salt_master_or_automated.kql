@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where (InitiatingProcessFolderPath contains "salt-master" or InitiatingProcessFolderPath contains "AutomatedProvisioner") and (FolderPath endswith "/id" or FolderPath endswith "/curl" or FolderPath endswith "/wget" or FolderPath endswith "/bash" or FolderPath endswith "/sh")

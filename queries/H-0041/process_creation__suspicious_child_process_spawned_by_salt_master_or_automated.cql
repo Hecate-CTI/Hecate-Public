@@ -1,0 +1,1 @@
+event_platform=/^Lin$/i ParentBaseFileName=/salt-master/i or ParentBaseFileName=/AutomatedProvisioner/i ImageFileName=/\/id$/i or ImageFileName=/\/curl$/i or ImageFileName=/\/wget$/i or ImageFileName=/\/bash$/i or ImageFileName=/\/sh$/i

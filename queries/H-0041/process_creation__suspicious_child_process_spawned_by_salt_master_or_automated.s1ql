@@ -1,0 +1,1 @@
+EventType = "Process Creation" AND (EndpointOS = "linux" AND ((SrcProcImagePath containsCIS "salt-master" OR SrcProcImagePath containsCIS "AutomatedProvisioner") AND (TgtProcImagePath endswithCIS "/id" OR TgtProcImagePath endswithCIS "/curl" OR TgtProcImagePath endswithCIS "/wget" OR TgtProcImagePath endswithCIS "/bash" OR TgtProcImagePath endswithCIS "/sh")))

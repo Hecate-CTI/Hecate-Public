@@ -1,0 +1,1 @@
+where((uri_path=/^.*\/salt\/.*$/i OR uri_path=/^.*\/key\/.*$/i OR uri_path=/^.*\/minion\/.*$/i) AND (uri_query=/^.*;.*$/i OR uri_query=/^.*\|.*$/i OR uri_query=/^.*`.*$/i OR uri_query=/^.*\$\(.*$/i OR uri_query=/^.*\$\{.*$/i OR uri_query=/^.*&&.*$/i OR uri_query=/^.*\|\|.*$/i))
