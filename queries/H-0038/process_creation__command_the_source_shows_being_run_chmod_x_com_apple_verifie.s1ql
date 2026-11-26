@@ -1,1 +1,0 @@
-EventType = "Process Creation" AND (EndpointOS = "osx" AND (TgtProcImagePath endswithCIS "/chmod" AND TgtProcCmdLine containsCIS "+x com.apple.verified`:"))

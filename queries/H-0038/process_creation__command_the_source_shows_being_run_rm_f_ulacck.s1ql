@@ -1,1 +1,0 @@
-EventType = "Process Creation" AND (EndpointOS = "osx" AND (TgtProcImagePath endswithCIS "/rm" AND TgtProcCmdLine containsCIS "-f .UlaccK"))

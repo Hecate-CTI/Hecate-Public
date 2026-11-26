@@ -1,1 +1,0 @@
-where(process.exe_path=/^.*\/xattr$/i AND process.cmd_line=/^.*-d com\.apple\.quarantine.*$/i)

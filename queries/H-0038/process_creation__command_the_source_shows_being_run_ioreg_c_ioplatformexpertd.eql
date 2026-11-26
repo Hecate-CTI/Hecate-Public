@@ -1,1 +1,0 @@
-any where Image:"*/ioreg" and CommandLine:"*-c IOPlatformExpertDevice*"

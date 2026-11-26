@@ -1,2 +1,0 @@
-DeviceProcessEvents
-| where FolderPath endswith "/chmod" and ProcessCommandLine contains "+x com.apple.verified`:"

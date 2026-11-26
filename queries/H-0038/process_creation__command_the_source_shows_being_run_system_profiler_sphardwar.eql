@@ -1,1 +1,0 @@
-any where Image:"*/system_profiler" and CommandLine:"*SPHardwareDataType`:*"

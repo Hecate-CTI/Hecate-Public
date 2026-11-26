@@ -1,0 +1,32 @@
+title: Malformed Base64 Padding in HTTP Authorization Header (Java4Shell Lead)
+id: a1c4e9f0-2b3d-4e5f-8a6b-7c8d9e0f1a2b
+status: experimental
+description: Hunting lead for Java4Shell (CVE-2026-114938). Flags Authorization (or
+  similar) header values where a Base64 padding character "=" appears before trailing
+  non-padding material — consistent with crafted padding that can trigger the OpenJDK
+  AVX-512 Base64 decoder bug. Confirm JVM version/AVX path and correlate with hs_err_pid
+  or unexpected java child processes on the same host.
+references:
+- https://calif.io/java4shell
+- https://www.sysdig.com/blog/java4shell-cve-2026-114938-pre-auth-rce-in-openjdk
+author: hecate (portfolio triage)
+date: "2026-11-26"
+tags:
+- attack.t1190
+- attack.t1552.004
+logsource:
+  category: webserver
+detection:
+  selection_auth_field:
+    cs-Authorization|re: "=[A-Za-z0-9+/]"
+  selection_auth_alt:
+    Authorization|re: "=[A-Za-z0-9+/]"
+  condition: 1 of selection_auth*
+falsepositives:
+- Rare legitimate clients sending non-standard Authorization encodings
+- Proxies that corrupt or wrap auth headers
+level: high
+hunt_id: H-0039
+hecate_review:
+  verdict: keep
+  notes: Primary exploit-surface lead; field names vary by web pipeline — map Authorization at deploy time.

@@ -1,12 +1,16 @@
-title: Java Process Spawning Interactive Shell or Binary
+title: Java Process Spawning Interactive Shell or Binary (Secondary Post-Exploit)
 id: d7a1b8c2-3e4f-4a5b-9c6d-1a2b3c4d5e6f
 status: stable
-description: Detects a Java service process (such as Keycloak, Jira, Confluence, or Jenkins) spawning an interactive shell or command interpreter, indicating potential post-exploitation following Java4Shell (CVE-2026-114938) remote code execution.
+description: Secondary signal for Java4Shell (CVE-2026-114938). Detects a Java parent
+  spawning a shell or common living-off-the-land binary. High false-positive rate on
+  app servers that shell out for health checks; triage only with the malformed-Base64
+  web lead and/or hs_err_pid crash near the same host/time.
 references:
 - https://calif.io/java4shell
 - https://www.sysdig.com/blog/java4shell-cve-2026-114938-pre-auth-rce-in-openjdk
-author: hecate-runner orchestrator
-date: '2026-11-19'
+author: hecate (portfolio triage)
+date: "2026-11-19"
+modified: "2026-11-26"
 tags:
 - attack.execution
 - attack.t1059.004
@@ -17,20 +21,25 @@ logsource:
   product: linux
 detection:
   selection_parent:
-    ParentImage|contains:
+    ParentImage|endswith:
     - /java
+    - /java.exe
   selection_child:
     Image|endswith:
     - /bin/sh
     - /bin/bash
     - /bin/dash
     - /bin/zsh
-    - /usr/bin/curl
-    - /usr/bin/wget
-    - /usr/bin/whoami
-    - /usr/bin/id
+    - /curl
+    - /wget
+    - /whoami
+    - /id
   condition: selection_parent and selection_child
 falsepositives:
-- Legitimate administrative maintenance scripts executed directly by application management wrappers
-level: high
+- Application management wrappers, installers, and health scripts that intentionally invoke shells from JVM processes
+- CI agents and build tools running under a java parent
+level: medium
 hunt_id: H-0039
+hecate_review:
+  verdict: keep
+  notes: Demoted from primary to secondary post-exploit; prefer Base64 auth anomaly + crash correlation.

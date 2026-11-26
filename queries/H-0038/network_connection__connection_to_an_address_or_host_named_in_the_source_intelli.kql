@@ -1,2 +1,0 @@
-DeviceNetworkEvents
-| where RemoteIP =~ "193.29.224.151" or RemoteIP =~ "77.221.152.34" or (RemoteIP =~ "138.124.118.69" and RemotePort == 8133) or RemoteUrl =~ "profitnow.io"

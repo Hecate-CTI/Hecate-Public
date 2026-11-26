@@ -1,2 +1,0 @@
-DeviceProcessEvents
-| where FolderPath endswith "/ioreg" and ProcessCommandLine contains "-c IOPlatformExpertDevice"

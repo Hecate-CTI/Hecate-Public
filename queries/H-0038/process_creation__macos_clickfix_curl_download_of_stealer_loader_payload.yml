@@ -1,0 +1,42 @@
+title: macOS ClickFix curl Download of Stealer Loader Payload
+id: e2db23de-0a6b-44d9-98b8-6259d0056b25
+status: experimental
+description: Detects curl fetching the Huntress-reported ClickFix loader URL (Aeza-hosted
+  path ending in force=1) and writing a hidden staging file. High-signal campaign artifact
+  while infrastructure is fresh; corroborate with LaunchAgent bootstrap and C2 on 8133/tcp.
+references:
+- https://www.huntress.com/blog/mac-crypto-draining-malware
+author: hecate (portfolio triage)
+date: "2026-11-25"
+modified: "2026-11-26"
+tags:
+- attack.t1105
+- attack.t1204.004
+logsource:
+  category: process_creation
+  product: macos
+detection:
+  selection_curl:
+    Image|endswith: /curl
+  selection_url:
+    CommandLine|contains:
+    - "193.29.224.151/"
+    - "77.221.152.34/"
+  selection_force:
+    CommandLine|contains: "force=1"
+  condition: selection_curl and selection_url and selection_force
+falsepositives:
+- Security researchers replaying the published Huntress sample command in a lab
+level: high
+hecate_provenance:
+- value: http://193.29.224.151/92392991a0cca55?force=1
+  type: url
+  role: download
+  status: active
+  confidence: high
+  source: https://www.huntress.com/blog/mac-crypto-draining-malware
+  evidence: Huntress ClickFix loader curl command writing .UlaccK then bash execution
+hunt_id: H-0038
+hecate_review:
+  verdict: keep
+  notes: Renamed from auto command-echo title; broadened to both delivery IPs with force=1 marker.

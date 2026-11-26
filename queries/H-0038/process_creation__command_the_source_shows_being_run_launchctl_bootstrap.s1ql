@@ -1,1 +1,0 @@
-EventType = "Process Creation" AND (EndpointOS = "osx" AND (TgtProcImagePath endswithCIS "/launchctl" AND TgtProcCmdLine containsCIS "bootstrap"))

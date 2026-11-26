@@ -1,2 +1,0 @@
-DeviceProcessEvents
-| where FolderPath endswith "/xattr" and ProcessCommandLine contains "-d com.apple.quarantine"

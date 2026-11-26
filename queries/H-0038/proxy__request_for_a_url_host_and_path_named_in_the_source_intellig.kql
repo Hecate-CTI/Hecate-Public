@@ -1,1 +1,0 @@
-TranspiledQuery(target='sentinel_kql', platform_name='Microsoft Defender / Microsoft Sentinel', dialect='kql', file_extension='.kql', query=None, success=False, error_message='HTTP KQL requires an explicit deployed table and field mapping; generic Sigma field names must not become quoted string constants', validation=None)

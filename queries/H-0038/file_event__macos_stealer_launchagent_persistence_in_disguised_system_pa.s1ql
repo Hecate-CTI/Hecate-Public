@@ -1,1 +1,0 @@
-ObjectType = "File" AND (EndpointOS = "osx" AND ((TgtFilePath containsCIS "/Library/LaunchAgents/" AND TgtFilePath endswithCIS ".plist") OR (TgtFilePath containsCIS "/Library/Caches/com.apple.trustd/" AND TgtFilePath containsCIS "com.apple.verified") OR (TgtFilePath containsCIS "/Library/Caches/homeenergyd/" AND TgtFilePath containsCIS "com.apple.homeenergyd")))
