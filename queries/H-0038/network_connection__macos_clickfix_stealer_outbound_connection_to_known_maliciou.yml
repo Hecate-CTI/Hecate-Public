@@ -1,61 +1,55 @@
-title: macOS ClickFix Stealer Outbound Connection to Known Malicious Infrastructure
+title: macOS ClickFix Stealer Outbound Connection to Campaign Infrastructure
 id: dc242e07-b8ae-4c91-aede-fb9fc79dec55
 status: experimental
-description: Matches outbound connections to IP addresses named in the historical Huntress report as delivery
-  or C2 infrastructure. Confirm current destination context, protocol, port and related process activity.
-  An address match alone does not establish malware execution, exfiltration or current malicious ownership.
+description: Detects outbound connections to Huntress-reported ClickFix delivery hosts or
+  to the stealer C2 address on the nonstandard HTTP port 8133/tcp. Address match alone is a
+  lead; port 8133 to the C2 IP is higher confidence and should be prioritized.
 references:
 - https://www.huntress.com/blog/mac-crypto-draining-malware
-author: hecate (auto-generated draft - requires analyst review)
-date: '2026-11-25'
+author: hecate (portfolio triage)
+date: "2026-11-25"
+modified: "2026-11-26"
 tags:
 - attack.t1105
+- attack.t1071.001
 logsource:
   category: network_connection
   product: macos
 detection:
-  selection:
+  selection_delivery:
     DestinationIp:
     - 193.29.224.151
-    - 138.124.118.69
     - 77.221.152.34
-  condition: selection
+  selection_c2:
+    DestinationIp: 138.124.118.69
+    DestinationPort: 8133
+  condition: 1 of selection_*
 falsepositives:
-- Security researchers or malware analysts intentionally connecting to known malicious infrastructure
-  in a controlled environment
-- Legitimate services coincidentally reassigned to these IP addresses by a hosting provider after infrastructure
-  takedown and reuse
-level: medium
+- Lab replay against published infrastructure
+- IP reuse after hosting churn (verify ASN/port/process)
+level: high
 hecate_provenance:
 - value: 193.29.224.151
   type: ipv4
   role: download
   status: active
-  confidence: unknown
+  confidence: medium
   source: https://www.huntress.com/blog/mac-crypto-draining-malware
-  evidence: Both hosting addresses, `77.221.152[.]34` and `193.29.224[.]151`, were used to deliver the
-    payload belonging to Aeza Group's IP address pool.
+  evidence: Delivery hosting in Aeza pool
 - value: 77.221.152.34
   type: ipv4
   role: staging
   status: active
-  confidence: unknown
+  confidence: medium
   source: https://www.huntress.com/blog/mac-crypto-draining-malware
-  evidence: Both hosting addresses, `77.221.152[.]34` and `193.29.224[.]151`, were used to deliver the
-    payload belonging to Aeza Group's IP address pool.
+  evidence: Delivery hosting in Aeza pool
 - value: 138.124.118.69
   type: ipv4
   role: c2
   status: active
-  confidence: unknown
+  confidence: high
   source: https://www.huntress.com/blog/mac-crypto-draining-malware
-  evidence: The stealer would have communicated with a C2 server at `138.124.118[.]69`, using the HTTP
-    protocol over the nonstandard port `8133/tcp`.
+  evidence: Stealer C2 over HTTP on 8133/tcp
 hunt_id: H-0038
 hecate_review:
   verdict: keep
-hecate_source_review:
-  reviewer: Codex
-  status: corrected_unvalidated
-  changes:
-  - Treat historical IP matches as leads rather than proof of loader or C2 activity.

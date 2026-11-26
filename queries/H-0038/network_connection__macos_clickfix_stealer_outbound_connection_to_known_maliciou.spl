@@ -1,1 +1,1 @@
-DestinationIp IN ("193.29.224.151", "138.124.118.69", "77.221.152.34")
+(DestinationIp IN ("193.29.224.151","77.221.152.34")) OR (DestinationIp="138.124.118.69" DestinationPort=8133)
