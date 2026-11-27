@@ -1,0 +1,1 @@
+"cs-uri-stem"="/jsonapi/*" "cs-uri-query" IN ("*filter[*", "*filter%5B*", "*filter%5b*")

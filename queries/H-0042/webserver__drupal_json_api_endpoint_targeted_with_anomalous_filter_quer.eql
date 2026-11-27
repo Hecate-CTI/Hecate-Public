@@ -1,0 +1,1 @@
+any where url.path:"/jsonapi/*" and (url.query like~ ("*filter[*", "*filter%5B*", "*filter%5b*"))

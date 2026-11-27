@@ -1,0 +1,52 @@
+title: Web Server Process Spawning Unexpected Child Process
+id: 844c86d7-3c8c-4e3c-b50d-ef93540aa1a9
+status: experimental
+description: Detects web server worker processes (php-fpm, apache2, nginx, httpd) spawning shells, interpreters,
+  or network utilities as child processes. This behavior is consistent with post-exploitation activity
+  following successful exploitation of a public-facing web application such as Drupal Core via CVE-2026-9082
+  (T1190), where a pre-authentication vulnerability in the JSON:API endpoint could allow an attacker to
+  achieve remote code execution, resulting in the web server process forking an unexpected subprocess.
+references:
+- https://vulncheck.com/cve/CVE-2026-9082
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-27'
+tags:
+- attack.t1190
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_parent:
+    ParentImage|contains:
+    - /php-fpm
+    - /apache2
+    - /nginx
+    - /httpd
+  selection_child:
+    Image|endswith:
+    - /sh
+    - /bash
+    - /dash
+    - /zsh
+    - /python
+    - /python3
+    - /perl
+    - /ruby
+    - /curl
+    - /wget
+    - /nc
+    - /ncat
+    - /netcat
+    - /socat
+  condition: selection_parent and selection_child
+falsepositives:
+- Legitimate web application maintenance scripts or health checks that invoke shell commands from the
+  web server process
+- Deployment pipelines or configuration management tools that run as the web server user
+- PHP applications that intentionally shell out to system utilities for legitimate processing tasks
+level: high
+hunt_id: H-0042
+hecate_review:
+  verdict: keep
+x_hecate_replay_matched: true
+x_hecate_synthetic_holdout_status: failed

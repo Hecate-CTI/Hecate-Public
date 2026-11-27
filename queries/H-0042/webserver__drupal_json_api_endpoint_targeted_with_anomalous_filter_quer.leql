@@ -1,0 +1,1 @@
+where(uri_path=/^\/jsonapi\/.*$/i AND (uri_query=/^.*filter\[.*$/i OR uri_query=/^.*filter%5B.*$/i OR uri_query=/^.*filter%5b.*$/i))

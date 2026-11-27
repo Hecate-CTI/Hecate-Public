@@ -1,0 +1,36 @@
+title: Drupal JSON:API Endpoint Targeted with Anomalous Filter Query Parameters
+id: 12b71978-9ee3-4efe-ae63-8469a9885e27
+status: experimental
+description: Detects inbound HTTP requests to Drupal Core JSON:API endpoints where the URI stem targets
+  /jsonapi/ paths and the query string contains structured filter parameters. This pattern is consistent
+  with exploitation attempts against CVE-2026-9082, where crafted filter conditions submitted to JSON:API
+  node endpoints can trigger unauthorized access. The rule fires on the combination of the JSON:API path
+  prefix and filter parameter syntax in the query string, which together represent the behavioral fingerprint
+  of this attack class regardless of authentication state.
+references:
+- https://vulncheck.com/cve/CVE-2026-9082
+author: hecate (auto-generated draft - requires analyst review)
+date: '2026-11-27'
+tags:
+- attack.t1190
+logsource:
+  category: webserver
+detection:
+  selection_path:
+    cs-uri-stem|startswith: /jsonapi/
+  selection_query_params:
+    cs-uri-query|contains:
+    - filter[
+    - filter%5B
+    - filter%5b
+  condition: selection_path and selection_query_params
+falsepositives:
+- Legitimate decoupled Drupal front-end applications querying the JSON:API with filter parameters for
+  content retrieval
+- Automated content management scripts or CI/CD pipelines interacting with Drupal JSON:API endpoints
+- Security scanners and vulnerability assessment tools probing web application endpoints
+level: medium
+hunt_id: H-0042
+hecate_review:
+  verdict: keep
+x_hecate_synthetic_holdout_status: failed
