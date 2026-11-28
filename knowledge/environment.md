@@ -72,7 +72,7 @@ Before live hunting, queries are verified via COUNT-FIRST checks against known e
 ## Execution and response authorization
 
 - **Hunt owner / approver / escalation contact:** Hunting Lead (`slack:U0C9TQPLK2P`) / Security Operations.
-- **Approved scope and schedule:** Scheduled autonomous sweeps active across keeper hunts (`H-0030`, `H-0033`, `H-0038`, `H-0041`). `H-0042` is active but not a keeper until explicit promotion after query-quality review and lab/synthetic TP proof.
+- **Approved scope and schedule:** Scheduled autonomous sweeps active across keeper hunts (`H-0030`, `H-0033`, `H-0038`, `H-0041`, `H-0042`).
 - **Read-only query / pivot budgets:** 300s query timeout, maximum 3 pivot iterations per triage finding.
 - **Containment / BAS / deployment / suppression authorization:** Staged sweep approvals required prior to action taking; notifications routed to designated Slack alert channels.
 
